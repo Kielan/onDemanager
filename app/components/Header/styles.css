@@ -1,0 +1,40 @@
+header {
+    height: 3rem;
+}
+
+.logo {
+    height: inherit;
+}
+
+.searchNav {
+    padding-left: 23px;
+    height: 70px;
+    border-left: 1px solid rgb(224, 241, 231);
+    height: inherit;
+}
+
+.searchForm {
+    font-size: 21px;
+    color: rgb(85, 84, 89);
+}
+
+.profileIcon {
+    width: 64px;
+    height: 64px;
+    border-radius: .2rem;
+}
+
+.navRight {
+    list-style-type: none;
+    display: flex;
+    button {
+	color: white;
+	background: black;
+	border-radius: .2rem;
+	max-height: 2rem;
+	width: 5rem;
+	label {
+	    font-size: 32px;
+	}
+    }
+}
