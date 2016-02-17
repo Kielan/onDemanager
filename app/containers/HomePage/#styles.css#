@@ -1,4 +1,11 @@
+.dashboardCompose {
+    padding: 10px 12px;
+    background-color: #E5E5E5;
+}
 
+.awesomeEditor {
+
+}
 
 .textSection {
   margin: 3em auto;

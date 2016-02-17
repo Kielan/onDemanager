@@ -27,6 +27,8 @@ import LoadingIndicator from 'LoadingIndicator';
 
 import Header from 'Header';
 import DashboardProfile from 'DashboardProfile';
+import ComposeBox from 'ComposeBox';
+
 
 import styles from './styles.css';
 
@@ -51,17 +53,14 @@ class HomePage extends React.Component {
     return (
 	    <article className="row">
 	    
-
+	
 	    <DashboardProfile />
-
+	    <ComposeBox />
 
 	    <div className="col-md-6">
-	    <div className={styles.dashboardCompose}>
-	    <img className="" src="https://pbs.twimg.com/profile_images/694099768834797568/IvPKkR0E_normal.jpg" alt=""></img>
-	    <form>
-	    <div className="awesomeEditor"><input></input></div>
-	</form>
-	    </div>
+
+	    <ComposeBox />
+	
 	    </div>
 
 	
