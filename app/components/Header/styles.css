@@ -1,5 +1,6 @@
 header {
     height: 3rem;
+    border-bottom: 1px inset rgba(0,0,0,0.15);
 }
 
 .logo {
@@ -27,14 +28,36 @@ header {
 .navRight {
     list-style-type: none;
     display: flex;
+    li {
+	display: block;
+	flex-grow: 1;
+    }
     button {
 	color: white;
-	background: black;
+	background: rgba(0,0,0,.8);
 	border-radius: .2rem;
 	max-height: 2rem;
 	width: 5rem;
+	border: 1px solid transparent;
+	box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
+	cursor: pointer;
 	label {
 	    font-size: 32px;
 	}
+    }
+    button:focus {
+	box-shadow: 0 0 0 1px #fff, 0 0 0 3px rgba(0, 0, 0, 0.5);
+	border-width: 2px;
+	border-style: outset;
+	border-color: buttonface;
+	-webkit-appearance: none;
+    }
+}
+
+.headerProfile {
+    width: 2.75rem;
+    height: 2.75rem;
+    img {
+	width: inherit;
     }
 }

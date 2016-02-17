@@ -20,7 +20,7 @@ class Header extends React.Component {
 		<div className="col-md-2">
 		<ul className={styles.navRight}>
 		<li>
-		<a>
+		<a className={styles.headerProfile}>
 		<img src="https://pbs.twimg.com/profile_images/694099768834797568/IvPKkR0E_bigger.jpg"></img>
 		</a>
 		</li>
