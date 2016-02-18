@@ -82,9 +82,6 @@ class ComposeBox extends React.Component {
 		Tweet
             </button>
 		</div>
-		<div>
-		Show autocomplete? {this.state.queryMention ? 'Yes ' + this.state.queryMention : 'No'}
-            </div>
 		</div>
 	);
     }

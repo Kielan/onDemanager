@@ -5,6 +5,7 @@ header {
 
 .logo {
     height: inherit;
+    margin: 0;
 }
 
 .searchNav {
@@ -14,9 +15,27 @@ header {
     height: inherit;
 }
 
+.searchContainer {
+    height: 100%;
+}
+
 .searchForm {
+    height: 100%;
+    display: flex;
     font-size: 21px;
     color: rgb(85, 84, 89);
+    label {
+	font-size: 1.6rem;
+	align-self: center;
+    }
+    input {
+	margin-left: 1rem;
+	margin-bottom: .25rem;
+	flex: 1;
+    }
+    input:focus {
+	outline: none;
+    }
 }
 
 .profileIcon {
@@ -25,9 +44,14 @@ header {
     border-radius: .2rem;
 }
 
+.navRightContainer {
+    height: 100%;
+}
+
 .navRight {
     list-style-type: none;
     display: flex;
+    align-items: center;
     li {
 	display: block;
 	flex-grow: 1;
