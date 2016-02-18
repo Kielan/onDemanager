@@ -7,6 +7,7 @@
     "fontfaceobserver": "^1.6.3",
     "immutable": "^3.7.6",
     "react": "^0.14.6",
+    "react-autobind": "^1.0.6",
     "react-dom": "^0.14.6",
     "react-pure-render": "1.0.2",
     "react-redux": "^4.0.6",

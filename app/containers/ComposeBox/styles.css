@@ -1,3 +1,7 @@
 .dashboardCompose {
     color: blue
 }
+
+.composeContainer {
+    width: inherit;
+}
