@@ -55,10 +55,9 @@ class HomePage extends React.Component {
 	    
 	
 	    <DashboardProfile />
-	    <ComposeBox />
+
 
 	    <div className="col-md-6">
-
 	    <ComposeBox />
 	
 	    </div>
