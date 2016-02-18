@@ -8,6 +8,7 @@ class ComposeBox extends React.Component {
 	super()
 	var editing = false
 	var defaultValue = ''
+	this.onChange = this.onChange.bind(this)
 	this.state = {
 	    html: defaultValue,
 	    theMaxLength: 150,
