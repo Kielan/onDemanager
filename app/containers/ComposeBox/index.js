@@ -1,5 +1,9 @@
 import React from 'react';
 import ContentEditable from 'react-wysiwyg';
+import FileInput from 'react-file-input';
+import Dropzone from 'react-dropzone';
+
+import styles from './styles.css';
 
 var escape = document.createElement('textarea')
 function escapeHTML(html) {
@@ -61,8 +65,9 @@ class ComposeBox extends React.Component {
 	    && (this.state.totalLength > 0)
 
 	return (
-		<div>
+		<div className={styles.composeBox}>
 		<div aria-live='polite'>{this.state.error}</div>
+		<div className={styles.profileIcon}><img src="https://pbs.twimg.com/profile_images/694099768834797568/IvPKkR0E_bigger.jpg"></img></div>
 		<ContentEditable
             ref='editable'
             tagName='div'
@@ -74,14 +79,27 @@ class ComposeBox extends React.Component {
             noLinebreaks
             onChange={this.onChange}
             editing={this.state.editing}
+	    className={styles.composeTextArea}
 		/>
 		<div className='controls'>
 		<div id="content-length">
 		{this.state.maxLength - this.state.totalLength}
             </div>
-		<button disabled={!isValid} onClick={this.enableEditing}>
-		Tweet
+
+		<div className={styles.composeButtons}>
+		<button className={styles.send}disabled={!isValid} onClick={this.enableEditing}>
+		<i className="fa fa-pencil"></i>
+		<span className="">
+		Speak
+	    </span>
             </button>
+		</div>
+		
+		<div>
+		<Dropzone className={styles.fileUpload}>
+		<i className="fa fa-camera-retro"></i>
+		</Dropzone>
+		</div>
 		</div>
 		</div>
 	);

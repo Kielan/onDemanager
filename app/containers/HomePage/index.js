@@ -63,30 +63,7 @@ class HomePage extends React.Component {
 	    </div>
 
 	
-          <section className={ styles.textSection }>
-              <form className={ styles.usernameForm } onSubmit={ this.props.onSubmitForm }>
-                <label>Show repositories of
-                  <span className={ styles.atPrefix }>@</span>
-                  <input
-                    className={ styles.input }
-                    type="text"
-                    placeholder="mxstbr"
-                    value={ this.props.username }
-                    onChange={ this.props.onChangeUsername }
-                  />
-                </label>
-              </form>
-                {(this.props.loading) ? (
-                  <List items={[{}]} render={LoadingIndicator} />
-                ) : (
-                  <div>
-                    {(this.props.repos !== false) ? (
-                      <List items={this.props.repos} render={RepoListItem} />
-                    ) : null }
-                  </div>
-                )}
-          </section>
-          <Button handleRoute = { this.changeRouteToReadme }>Features</Button>
+          
       </article>
     );
   }
