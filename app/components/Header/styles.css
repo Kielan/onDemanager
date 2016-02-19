@@ -39,8 +39,8 @@ header {
 }
 
 .profileIcon {
-    width: 64px;
-    height: 64px;
+    width: 2.75rem;
+    height: 2.75rem;
     border-radius: .2rem;
 }
 
@@ -67,6 +67,7 @@ header {
 	cursor: pointer;
 	label {
 	    font-size: 32px;
+	    cursor: pointer;
 	}
     }
     button:focus {

@@ -12,6 +12,7 @@ class ComposeBox extends React.Component {
 	super();
 	var defaultValue = '';
 	this.onChange = this.onChange.bind(this)
+	this.checkCursor = this.checkCursor.bind(this)
 	this.state = {
 	    html: '',
 	    editing: true,
