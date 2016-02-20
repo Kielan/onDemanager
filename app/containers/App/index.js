@@ -22,7 +22,6 @@ class App extends React.Component {
 	    <div className={ styles.wrapper }>
 	    <Header />
         { this.props.children }
-        <Footer />
       </div>
     );
   }

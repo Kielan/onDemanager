@@ -1,6 +1,7 @@
 header {
     height: 3rem;
     border-bottom: 1px inset rgba(0,0,0,0.15);
+    margin-bottom: 1.25rem;
 }
 
 .logo {

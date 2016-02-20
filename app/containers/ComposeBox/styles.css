@@ -1,4 +1,5 @@
 .send {
+    margin-left: auto;
     background-color: #000000;
     background: rgba(0,0,0,.8);
     border: 1px solid transparent;
@@ -13,7 +14,15 @@
 .fileUpload {
     cursor: pointer;
     font-size: 1.5rem;
-    width: 2rem;
+}
+
+.disabled {
+    color: rgba(0, 0, 0, .5);
+}
+
+.fileUpload:hover {
+    border: 1px solid rgba(0, 0, 0, .5);
+    border-radius: .2rem;
 }
 
 .dashboardCompose {
@@ -22,6 +31,12 @@
 
 .composeButtons {
     display: flex;
+    align-items: center;
+    i {
+	font-size: 1.5rem;
+	width: 2rem;
+	text-align: center;
+    }
 }
 
 .composeContainer {
@@ -31,9 +46,7 @@
 .composeBox {
     border-radius: 3px 3px 0 0;
     background-color: #E5E5E5;
-    padding-top: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 1rem;
 }
 
 .profileIcon {
@@ -47,6 +60,7 @@
 
 .composeTextArea {
     background-color: white;
-    display: inline;
+    display: block;
     z-index: 10;
+    margin-left: 3rem;
 }

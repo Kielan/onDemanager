@@ -87,19 +87,27 @@ class ComposeBox extends React.Component {
             </div>
 
 		<div className={styles.composeButtons}>
+		<div>
+		<Dropzone className={styles.fileUpload}>
+		<i className="fa fa-camera-retro"></i>
+		<span>Media</span>
+		</Dropzone>
+		</div>
+		<div className={styles.composeButtons + styles.disabled}>
+		<i className="fa fa-map-marker"></i>
+		Location disabled
+		</div>
+	    
 		<button className={styles.send}disabled={!isValid} onClick={this.enableEditing}>
 		<i className="fa fa-pencil"></i>
 		<span className="">
 		Speak
 	    </span>
             </button>
-		</div>
+
 		
-		<div>
-		<Dropzone className={styles.fileUpload}>
-		<i className="fa fa-camera-retro"></i>
-		</Dropzone>
-		</div>
+
+				</div>
 		</div>
 		</div>
 	);
