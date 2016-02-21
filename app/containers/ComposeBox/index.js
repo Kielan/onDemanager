@@ -63,11 +63,6 @@ class ComposeBox extends React.Component {
 
 	window.requestAnimationFrame(self.checkCursor)
     }
-
-    synthFocus(element) {
-	element.getDOMNode().focus();
-	console.log('handle focus', element.getDOMNode().focus() === true)
-    }
     
     render (){
 
