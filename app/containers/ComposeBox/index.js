@@ -140,12 +140,6 @@ class ComposeBox extends React.Component {
 	var editing = !this.state.editing
 	var synthFocusDisplay = !this.state.synthFocusDisplay
 	var synthUnfocusDisplay = !this.state.synthUnfocusDisplay
-	
-	var quickUploadNode = ReactDOM.findDOMNode(this.refs.quickUpload);
-	var controlsNode = ReactDOM.findDOMNode(this.refs.controls);
-
-//	var blockNodeSpefRef = blockNode.re
-	console.log('hmmm', quickUploadNode, typeof(blockNode))
 
 	this.setState({ editing: editing, synthFocusDisplay: synthFocusDisplay, synthUnfocusDisplay: synthUnfocusDisplay });
 	if (editing) {
