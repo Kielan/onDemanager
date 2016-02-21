@@ -1,7 +1,11 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import createFragment from 'react-addons-create-fragment';
+
 import ContentEditable from 'react-wysiwyg';
 import FileInput from 'react-file-input';
 import Dropzone from 'react-dropzone';
+import autobind from 'react-autobind';
 
 import styles from './styles.css';
 
@@ -14,16 +18,17 @@ function escapeHTML(html) {
 class ComposeBox extends React.Component {
     constructor() {
 	super();
+	autobind(this);
 	var defaultValue = '';
-	this.onChange = this.onChange.bind(this)
-	this.checkCursor = this.checkCursor.bind(this)
 	this.state = {
-	    html: '',
+	    html: 'Whats on your mind?',
 	    editing: true,
 	    placeholder: true,
 	    maxLength: 140,
 	    totalLength: defaultValue.length,
-	    queryMention: false
+	    queryMention: false,
+	    synthFocusDisplay: false,
+	    synthUnfocusDisplay: true
 	}
     }
 
@@ -59,32 +64,51 @@ class ComposeBox extends React.Component {
 	window.requestAnimationFrame(self.checkCursor)
     }
 
+    synthFocus(element) {
+	element.getDOMNode().focus();
+	console.log('handle focus', element.getDOMNode().focus() === true)
+    }
+    
     render (){
 
 	var isValid = (this.state.maxLength >= this.state.totalLength)
 	    && (this.state.totalLength > 0)
 
+	var toggleDisplayFocus = function(stateVal) {
+	    var displayOrNah = stateVal ? "block" : "none";
+	    return {
+		display: displayOrNah
+	    }
+
+	}
+
 	return (
 		<div className={styles.composeBox}>
 		<div aria-live='polite'>{this.state.error}</div>
 		<div className={styles.profileIcon}><img src="https://pbs.twimg.com/profile_images/694099768834797568/IvPKkR0E_bigger.jpg"></img></div>
+		<div ref="quickUpload" style={toggleDisplayFocus(this.state.synthFocusDisplay)}>
+		<Dropzone className={styles.quickUpload+" "}>
+		<i className="fa fa-camera-retro"></i>
+		</Dropzone>
+		</div>
+		<div onClick={this.enableEditing}>
 		<ContentEditable
             ref='editable'
             tagName='div'
             html={this.state.html}
             placeholder={this.state.placeholder}
-            placeholderText='Compose Your Tweet'
+            placeholderText=''
             onKeyPress={this.onKeyPress}
             preventStyling
             noLinebreaks
             onChange={this.onChange}
             editing={this.state.editing}
 	    className={styles.composeTextArea}
+	    handleFocus={this.handleFocus}
 		/>
-		<div className='controls'>
-		<div id="content-length">
-		{this.state.maxLength - this.state.totalLength}
-            </div>
+		</div>
+
+		<div ref="controls"className={styles.controls} style={toggleDisplayFocus(this.state.synthUnfocusDisplay)}>
 
 		<div className={styles.composeButtons}>
 		<div>
@@ -93,24 +117,41 @@ class ComposeBox extends React.Component {
 		<span>Media</span>
 		</Dropzone>
 		</div>
-		<div className={styles.composeButtons + styles.disabled}>
+		<div className={styles.composeButtons, styles.disabled}>
 		<i className="fa fa-map-marker"></i>
 		Location disabled
+	    </div>
+		<div className={styles.sendStat}>
+	    <div id="content-length">
+		{this.state.maxLength - this.state.totalLength}
+            </div>
+		<button className={styles.send}>
+		<i className="fa fa-keyboard-o"></i>
+		</button>
 		</div>
-	    
-		<button className={styles.send}disabled={!isValid} onClick={this.enableEditing}>
-		<i className="fa fa-pencil"></i>
-		<span className="">
-		Speak
-	    </span>
-            </button>
 
-		
-
-				</div>
+		</div>
 		</div>
 		</div>
 	);
+    }
+
+    enableEditing(){
+	var editing = !this.state.editing
+	var synthFocusDisplay = !this.state.synthFocusDisplay
+	var synthUnfocusDisplay = !this.state.synthUnfocusDisplay
+	
+	var quickUploadNode = ReactDOM.findDOMNode(this.refs.quickUpload);
+	var controlsNode = ReactDOM.findDOMNode(this.refs.controls);
+
+//	var blockNodeSpefRef = blockNode.re
+	console.log('hmmm', quickUploadNode, typeof(blockNode))
+
+	this.setState({ editing: editing, synthFocusDisplay: synthFocusDisplay, synthUnfocusDisplay: synthUnfocusDisplay });
+	if (editing) {
+	    this.refs.editable.autofocus()
+	    this.refs.editable.setCursorToEnd()
+	}
     }
 
     autofocus () {
@@ -149,7 +190,6 @@ class ComposeBox extends React.Component {
 		    '</span>'
 		output = output + overflow
 	    }
-
 	    this.setState({
 		placeholder: false,
 		html: output,
@@ -159,15 +199,6 @@ class ComposeBox extends React.Component {
 
     }
 
-    enableEditing(){
-	var editing = !this.state.editing
-	// set your contenteditable field into editing mode.
-	this.setState({ editing: editing });
-	if (editing) {
-	    this.refs.editable.autofocus()
-	    this.refs.editable.setCursorToEnd()
-	}
-    }
 
 };
 

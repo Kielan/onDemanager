@@ -27,19 +27,19 @@ class Dropdown extends React.Component {
 		
 		<MenuOptions className={styles.MenuOptions}>
 		
-		<MenuOption>
+		<MenuOption className={styles.MenuOption}>
 		<span>Kielan Lemons</span>
 	    <small>View Profile</small>
             </MenuOption>
 
-		<MenuOption>
+		<MenuOption className={styles.MenuOption}>
 		Settings
             </MenuOption>
 
 		<div >
 		</div>
 
-		<MenuOption >
+		<MenuOption className={styles.MenuOption}>
 		Logout
             </MenuOption>
             </MenuOptions>

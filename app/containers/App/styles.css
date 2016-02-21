@@ -25,6 +25,9 @@ body.jsOpenSansLoaded {
   width: 100%;
 }
 
+textarea, input {
+    outline: none;
+}
 .wrapper {
   max-width: inherit;
   margin: 0 auto;
