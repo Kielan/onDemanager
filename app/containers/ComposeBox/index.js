@@ -17,6 +17,7 @@ function escapeHTML(html) {
 
 class filePreviewCard extends React.Component {
     render() {
+	console.log('nigga files: ', this.props.files);
 	return (
 		<div className="">
 		<button>
@@ -29,8 +30,9 @@ class filePreviewCard extends React.Component {
 
 class filePreviewCardList extends React.Component {
     render() {
+		console.log('Received files: ', this.props.files);
 	var previewCards = this.props.files.map(function(file, index) {
-	    console.log(file)
+	    console.log('hm?', file)
 	    return (
 		<filePreviewCard />
 	    )
@@ -58,7 +60,7 @@ class ComposeBox extends React.Component {
 	    queryMention: false,
 	    synthFocusDisplay: false,
 	    synthUnfocusDisplay: true,
-	    showFiles: true,
+	    showFiles: false,
 	    files: []
 	}
     }
@@ -100,7 +102,6 @@ class ComposeBox extends React.Component {
     }
 
     onDrop(files) {
-	console.log('Received files: ', files);
 	this.setState({showFiles: true})
 	
     }
@@ -160,11 +161,11 @@ class ComposeBox extends React.Component {
 		/>
 
 		<div className={"thumbnailContainer "} style={toggleDisplayFocus(this.state.showFiles)}>
-		<filePreviewCardList file={this.state.files} />
+		<filePreviewCardList files={this.state.files} />
 		</div>
 		</div>
 
-		<div ref="controls"className={styles.controls} style={toggleDisplayFocus(this.state.synthFocusDisplay)}>
+		<div ref="controls" className={styles.controls} style={toggleDisplayFocus(this.state.synthFocusDisplay)}>
 
 		<div className={styles.composeButtons}>
 		<div>
