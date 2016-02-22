@@ -30,17 +30,30 @@ class ComposeBox extends React.Component {
 	    synthFocusDisplay: false,
 	    synthUnfocusDisplay: true
 	}
+
+	this.dynamicStyle = {
+	    composeTextArea: {
+
+	    }
+	}
     }
 
+    static propTypes = {
+    };
+    
     componentDidMount () {
 	// Gives the window a callback to call before the next repaint.
 	window.requestAnimationFrame(this.checkCursor)
+	window.addEventListener('click', this.handleEditableContainerClick)
     }
 
+    componentWillUnmount () {
+	window.removeEventListener('click', this.handleEditableContainerClick)
+    }
+    
     checkCursor(timestamp) {
-	var self = this
+	var self = this;
 	var selection = window.getSelection()
-
 
 	if (this.state.editing && selection.focusNode) {
 
@@ -63,6 +76,16 @@ class ComposeBox extends React.Component {
 
 	window.requestAnimationFrame(self.checkCursor)
     }
+
+    handleEditableContainerClick = (e) => {
+	const area = this.refs.ContentEditableContainer;
+
+	if (!area.contains(e.target)) {
+	    this.setState({synthFocusDisplay: null, synthUnfocusDisplay: true})
+	} else {
+	    this.setState({synthFocusDisplay: true, synthUnfocusDisplay: null})
+	}
+    };
     
     render (){
 
@@ -70,23 +93,23 @@ class ComposeBox extends React.Component {
 	    && (this.state.totalLength > 0)
 
 	var toggleDisplayFocus = function(stateVal) {
-	    var displayOrNah = stateVal ? "block" : "none";
+	    var displayOrNo = stateVal ? "block" : "none";
+	    
 	    return {
-		display: displayOrNah
+		display: displayOrNo
 	    }
-
 	}
-
+	//console.log(this.refs)
 	return (
 		<div className={styles.composeBox}>
 		<div aria-live='polite'>{this.state.error}</div>
 		<div className={styles.profileIcon}><img src="https://pbs.twimg.com/profile_images/694099768834797568/IvPKkR0E_bigger.jpg"></img></div>
-		<div ref="quickUpload" style={toggleDisplayFocus(this.state.synthFocusDisplay)}>
+		<div ref="quickUpload" style={toggleDisplayFocus(this.state.synthUnfocusDisplay)}>
 		<Dropzone className={styles.quickUpload+" "}>
 		<i className="fa fa-camera-retro"></i>
 		</Dropzone>
 		</div>
-		<div onClick={this.enableEditing}>
+		<div ref="ContentEditableContainer"onClick={this.enableEditing} >
 		<ContentEditable
             ref='editable'
             tagName='div'
@@ -98,12 +121,12 @@ class ComposeBox extends React.Component {
             noLinebreaks
             onChange={this.onChange}
             editing={this.state.editing}
-	    className={styles.composeTextArea}
+	    className={styles.composeTextArea + (this.state.synthFocusDisplay ? (" "+styles.expand) : "")}
 	    handleFocus={this.handleFocus}
 		/>
 		</div>
 
-		<div ref="controls"className={styles.controls} style={toggleDisplayFocus(this.state.synthUnfocusDisplay)}>
+		<div ref="controls"className={styles.controls} style={toggleDisplayFocus(this.state.synthFocusDisplay)}>
 
 		<div className={styles.composeButtons}>
 		<div>
@@ -133,10 +156,8 @@ class ComposeBox extends React.Component {
 
     enableEditing(){
 	var editing = !this.state.editing
-	var synthFocusDisplay = !this.state.synthFocusDisplay
-	var synthUnfocusDisplay = !this.state.synthUnfocusDisplay
-
-	this.setState({ editing: editing, synthFocusDisplay: synthFocusDisplay, synthUnfocusDisplay: synthUnfocusDisplay });
+//, synthFocusDisplay: synthFocusDisplay, synthUnfocusDisplay: synthUnfocusDisplay 
+	this.setState({ editing: editing});
 	if (editing) {
 	    this.refs.editable.autofocus()
 	    this.refs.editable.setCursorToEnd()

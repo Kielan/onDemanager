@@ -29,3 +29,8 @@
 	white-space: nowrap;
     }
 }
+
+.toProfile {
+    display: flex;
+    flex-direction: column;
+}

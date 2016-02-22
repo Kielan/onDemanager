@@ -1,5 +1,6 @@
 import React from 'react';
 import autobind from 'react-autobind';
+import { Link } from 'react-router';
 import Menu from 'react-menu-simple';
 var MenuTrigger = Menu.MenuTrigger;
 var MenuOptions = Menu.MenuOptions;
@@ -28,9 +29,11 @@ class Dropdown extends React.Component {
 		<MenuOptions className={styles.MenuOptions}>
 		
 		<MenuOption className={styles.MenuOption}>
+		<Link to="/" className={styles.toProfile}>
 		<span>Kielan Lemons</span>
-	    <small>View Profile</small>
-            </MenuOption>
+		<small>View Profile</small>
+		</Link>
+		</MenuOption>
 
 		<MenuOption className={styles.MenuOption}>
 		Settings

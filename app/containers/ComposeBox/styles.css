@@ -105,6 +105,9 @@ textarea, input, button { outline: none; }
     height: 2rem;
 }
 
+.composeTextArea.expand {
+    height: 4rem;
+}
 .hide {
     display: none;
 }
