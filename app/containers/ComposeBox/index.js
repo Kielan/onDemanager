@@ -15,6 +15,35 @@ function escapeHTML(html) {
     return escape.innerHTML;
 }
 
+class filePreviewCard extends React.Component {
+    render() {
+	return (
+		<div className="">
+		<button>
+		<span className="fa fa-times"></span>
+	    </button>
+	    </div>
+	)
+    }
+}
+
+class filePreviewCardList extends React.Component {
+    render() {
+	var previewCards = this.props.files.map(function(file, index) {
+	    console.log(file)
+	    return (
+		<filePreviewCard />
+	    )
+	})
+	return (
+		<div className="previews">
+		{previewCards}
+		</div>
+	)
+    }
+}
+
+
 class ComposeBox extends React.Component {
     constructor() {
 	super();
@@ -22,24 +51,17 @@ class ComposeBox extends React.Component {
 	var defaultValue = '';
 	this.state = {
 	    html: 'Whats on your mind?',
-	    editing: true,
+	    editing: false,
 	    placeholder: true,
 	    maxLength: 140,
 	    totalLength: defaultValue.length,
 	    queryMention: false,
 	    synthFocusDisplay: false,
-	    synthUnfocusDisplay: true
-	}
-
-	this.dynamicStyle = {
-	    composeTextArea: {
-
-	    }
+	    synthUnfocusDisplay: true,
+	    showFiles: true,
+	    files: []
 	}
     }
-
-    static propTypes = {
-    };
     
     componentDidMount () {
 	// Gives the window a callback to call before the next repaint.
@@ -77,6 +99,12 @@ class ComposeBox extends React.Component {
 	window.requestAnimationFrame(self.checkCursor)
     }
 
+    onDrop(files) {
+	console.log('Received files: ', files);
+	this.setState({showFiles: true})
+	
+    }
+    
     handleEditableContainerClick = (e) => {
 	const area = this.refs.ContentEditableContainer;
 
@@ -86,7 +114,8 @@ class ComposeBox extends React.Component {
 	    this.setState({synthFocusDisplay: true, synthUnfocusDisplay: null})
 	}
     };
-    
+
+
     render (){
 
 	var isValid = (this.state.maxLength >= this.state.totalLength)
@@ -99,17 +128,22 @@ class ComposeBox extends React.Component {
 		display: displayOrNo
 	    }
 	}
-	//console.log(this.refs)
+
+	var toggleImagePreview = function(file) {
+	    var displayOrNo = file ? file : null;
+
+	}
+	
 	return (
 		<div className={styles.composeBox}>
 		<div aria-live='polite'>{this.state.error}</div>
 		<div className={styles.profileIcon}><img src="https://pbs.twimg.com/profile_images/694099768834797568/IvPKkR0E_bigger.jpg"></img></div>
 		<div ref="quickUpload" style={toggleDisplayFocus(this.state.synthUnfocusDisplay)}>
-		<Dropzone className={styles.quickUpload+" "}>
+		<Dropzone onDrop={this.onDrop} className={styles.quickUpload+" "}>
 		<i className="fa fa-camera-retro"></i>
 		</Dropzone>
 		</div>
-		<div ref="ContentEditableContainer"onClick={this.enableEditing} >
+		<div ref="ContentEditableContainer" onClick={this.enableEditing} >
 		<ContentEditable
             ref='editable'
             tagName='div'
@@ -124,6 +158,10 @@ class ComposeBox extends React.Component {
 	    className={styles.composeTextArea + (this.state.synthFocusDisplay ? (" "+styles.expand) : "")}
 	    handleFocus={this.handleFocus}
 		/>
+
+		<div className={"thumbnailContainer "} style={toggleDisplayFocus(this.state.showFiles)}>
+		<filePreviewCardList file={this.state.files} />
+		</div>
 		</div>
 
 		<div ref="controls"className={styles.controls} style={toggleDisplayFocus(this.state.synthFocusDisplay)}>
@@ -147,17 +185,17 @@ class ComposeBox extends React.Component {
 		<i className="fa fa-keyboard-o"></i>
 		</button>
 		</div>
-
+		
 		</div>
 		</div>
 		</div>
 	);
     }
 
-    enableEditing(){
-	var editing = !this.state.editing
-//, synthFocusDisplay: synthFocusDisplay, synthUnfocusDisplay: synthUnfocusDisplay 
-	this.setState({ editing: editing});
+    enableEditing() {
+	var editing = !this.state.editing;
+	
+	this.setState({editing: editing});
 	if (editing) {
 	    this.refs.editable.autofocus()
 	    this.refs.editable.setCursorToEnd()

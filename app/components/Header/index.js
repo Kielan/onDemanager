@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router';
+
 import bootstrap from 'bootstrap';
 import Dropdown from 'Dropdown';
 
@@ -9,7 +11,7 @@ class Header extends React.Component {
     render() {
 	return (
 		<header className="row">
-		<h1 className={styles.logo +" col-md-2"}><a >SpeakEasy</a></h1>
+		<h1 className={styles.logo +" col-md-2"}><Link to="/">SpeakEasy</Link></h1>
 		<div className={styles.searchNav +" col-md-8"}>
 		<div className={styles.searchContainer}>
 		<form className={styles.searchForm}>

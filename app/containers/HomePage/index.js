@@ -52,17 +52,13 @@ class HomePage extends React.Component {
   render() {
     return (
 	    <article className="row">
-	    
-	
+	    	
 	    <DashboardProfile />
-
 
 	    <div className="col-md-6">
 	    <ComposeBox />
 	
 	    </div>
-
-	
           
       </article>
     );

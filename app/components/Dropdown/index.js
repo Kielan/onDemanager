@@ -29,7 +29,7 @@ class Dropdown extends React.Component {
 		<MenuOptions className={styles.MenuOptions}>
 		
 		<MenuOption className={styles.MenuOption}>
-		<Link to="/" className={styles.toProfile}>
+		<Link to="/profile" className={styles.toProfile}>
 		<span>Kielan Lemons</span>
 		<small>View Profile</small>
 		</Link>
