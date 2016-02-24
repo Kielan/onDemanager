@@ -1,0 +1,17 @@
+.preview {
+
+}
+
+.previewImg {
+    height: 4rem;
+    width: 4rem;
+}
+
+.previewClose {
+    position: absolute;
+    span {
+	position: absolute;
+	top: 3px;
+	left: 50px;
+    }
+}
