@@ -1,10 +1,13 @@
 .preview {
-
+    height: 4rem;
+    width: 4rem;
 }
 
 .previewImg {
     height: 4rem;
     width: 4rem;
+    border: 1px solid #aaa;
+    border-radius: .2rem;
 }
 
 .previewClose {

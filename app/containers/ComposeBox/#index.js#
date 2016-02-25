@@ -144,8 +144,6 @@ class ComposeBox extends React.Component {
 
 	    </div>
 
-
-		
 		<div ref="controls" className={styles.controls} style={toggleDisplayFocus(this.state.synthFocusDisplay)}>
 
 		<div className={styles.composeButtons}>
