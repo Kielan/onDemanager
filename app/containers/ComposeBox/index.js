@@ -35,16 +35,18 @@ class ComposeBox extends React.Component {
 	    files: []
 	}
     }
-    
+
     componentDidMount () {
 	// Gives the window a callback to call before the next repaint.
 	window.requestAnimationFrame(this.checkCursor)
 	window.addEventListener('upload', this.handleOndrop)
 	window.addEventListener('click', this.handleEditableContainerClick)
+	window.addEventListener('click', this.handleCloseClick)
     }
 
     componentWillUnmount () {
 	window.removeEventListener('click', this.handleEditableContainerClick)
+	window.removeEventListener('click', this.handleCloseClick)
     }
     
     checkCursor(timestamp) {
@@ -72,6 +74,13 @@ class ComposeBox extends React.Component {
 
 	window.requestAnimationFrame(self.checkCursor)
     }
+
+    handleRemoveFile () {
+	this.setState({
+	    showFiles: false,
+	    files: []
+	})
+    }
     
     handleEditableContainerClick = (e) => {
 	const area = this.refs.ContentEditableContainer;
@@ -84,13 +93,18 @@ class ComposeBox extends React.Component {
 	}
     };
 
-    handleOndrop = (e) => {
-//	const upload buttons = this.refs.
+    handleCloseClick = (e) => {
+	const area = document.getElementById('closeBtn');
+	console.log('myaa', area)
+	if (area.contains(e.target)) {
+	    this.setState({showFiles: false, files: []})
+	}
+	
     };
 
     onDrop (files) {
 	console.log(files)
-	this.setState({showFiles: true, files: files})
+	this.setState({showFiles: true, files: files, synthFocusDisplay: true})
 	this.enableEditing()
 
 	console.log('showfiles: ', this.state.showFiles, 'files: ', this.state.files)
@@ -140,17 +154,15 @@ class ComposeBox extends React.Component {
 	    className={styles.composeTextArea + (this.state.synthFocusDisplay ? (" "+styles.expand) : "") + (this.state.showFiles ? (" "+styles.expandPreview) : "")}
 	    handleFocus={this.handleFocus}
 		/>
-	        <FilePreviewCardList files={this.state.files}/>
+	        <FilePreviewCardList onClick={this.handleCloseClick.bind(this)} files={this.state.files}/>
 
 	    </div>
 
-
-		
 		<div ref="controls" className={styles.controls} style={toggleDisplayFocus(this.state.synthFocusDisplay)}>
 
 		<div className={styles.composeButtons}>
 		<div>
-		<Dropzone className={styles.fileUpload}>
+		<Dropzone onDrop={this.onDrop} className={styles.fileUpload}>
 		<i className="fa fa-camera-retro"></i>
 		<span>Media</span>
 		</Dropzone>
