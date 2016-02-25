@@ -29,6 +29,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 console.log('>> Loading router'.bold.white);
-app.use('/blogapi', require('./routes'))
+app.use('/bitStream', require('./routes'))
 
 module.exports = app;

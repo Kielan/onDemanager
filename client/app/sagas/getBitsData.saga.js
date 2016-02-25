@@ -6,7 +6,7 @@ export function* getBitsData(getState) {
     while(true) {
 	yield take(LOAD_BITS);
 	const state = yield getState();
-	const requestURL = 'https://api.github.com/users/';
+	const requestURL = 'http://localhost:3005/bitStream/';
 	const bits = yield call(request, requestURL);
 	if (bits.err === undefined || bits.err === null) {
 	    yield put(bitsLoaded(repos.data));
