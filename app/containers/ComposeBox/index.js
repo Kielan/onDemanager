@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import createFragment from 'react-addons-create-fragment';
+import autobind from 'react-autobind';
 
 import ContentEditable from 'react-wysiwyg';
 import FileInput from 'react-file-input';
 import Dropzone from 'react-dropzone';
-import autobind from 'react-autobind';
+
 
 import FilePreviewCardList from 'filePreviewCardList';
 

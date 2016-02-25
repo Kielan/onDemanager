@@ -15,8 +15,8 @@ const routes = [
     path: '/profile',
     getComponent: function get(location, cb) {
       require.ensure([], (require) => {
-        cb(null, require('FeaturePage').default);
-      }, 'FeaturePage');
+        cb(null, require('ProfilePage').default);
+      }, 'ProfilePage');
     }
   }, {
     path: '/features',
