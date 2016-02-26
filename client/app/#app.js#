@@ -64,7 +64,6 @@ if (module.hot) {
   });
 }
 
-import { requireAuthentication } from 'actions';
 // Set up the router, wrapping all Routes in the App component
 import routes from './routes';
 const rootRoute = {

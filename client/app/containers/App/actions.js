@@ -1,3 +1,5 @@
+import { UserAuthWrapper } from 'redux-auth-wrapper'
+import { push } from 'react-router-redux';
 import { CHANGE_USERNAME, LOGIN, LOGIN_SUCCESS, LOAD_BITS, LOAD_BITS_SUCCESS, LOAD_REPOS, LOAD_REPOS_SUCCESS } from './constants';
 
 export function changeUsername(name) {
@@ -46,3 +48,10 @@ export function bitsLoaded(bits) {
 	bits
     };
 }
+
+export const requireAuthentication = UserAuthWrapper({
+  authSelector: state => state.auth,
+  predicate: auth => auth.isAuthenticated,
+  redirectAction: push,
+  wrapperDisplayName: 'UserIsJWTAuthenticated'
+})

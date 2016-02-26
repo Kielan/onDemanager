@@ -2,6 +2,8 @@
 // They are all wrapped in the App component, which contains the navigation etc
 // See http://blog.mxstbr.com/2016/01/react-apps-with-pages for more information
 // about the require.ensure code splitting business
+import { requireAuthentication } from 'actions';
+
 
 const routes = [
   {
@@ -14,7 +16,7 @@ const routes = [
   }, {
     path: '/profile',
     getComponent: function get(location, cb) {
-      require.ensure([], (require) => {
+	require.ensure([], (require) => {
         cb(null, require('ProfilePage').default);
       }, 'ProfilePage')
     }
