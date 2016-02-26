@@ -1,3 +1,6 @@
+export const LOGIN = 'boilerplate/App/LOGIN';
+export const LOGIN_SUCCESS = 'boilerplate/App/LOGIN_SUCCESS';
+export const LOGIN_ERROR = 'boilerplate/App/LOGIN_ERROR';
 export const LOAD_REPOS = 'boilerplate/App/LOAD_REPOS';
 export const LOAD_REPOS_SUCCESS = 'boilerplate/App/LOAD_REPOS_SUCCESS';
 export const LOAD_REPOS_ERROR = 'boilerplate/App/LOAD_REPOS_ERROR';

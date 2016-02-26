@@ -1,10 +1,23 @@
-import { CHANGE_USERNAME, LOAD_BITS, LOAD_BITS_SUCCESS, LOAD_REPOS, LOAD_REPOS_SUCCESS } from './constants';
+import { CHANGE_USERNAME, LOGIN, LOGIN_SUCCESS, LOAD_BITS, LOAD_BITS_SUCCESS, LOAD_REPOS, LOAD_REPOS_SUCCESS } from './constants';
 
 export function changeUsername(name) {
   return {
     type: CHANGE_USERNAME,
     name
   };
+}
+
+export function login() {
+    return {
+	type: LOGIN
+    }
+}
+
+export function loginSuccess(user) {
+    return {
+	type: LOGIN_SUCCESS,
+	user
+    }
 }
 
 export function loadRepos() {
