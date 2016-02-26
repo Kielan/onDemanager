@@ -6,7 +6,7 @@ function corsOrigin(env) {
     };
 }
 
-Module.exports = function(env) {
+module.exports = function(env) {
     return {
 	origin: function(origin, callback) {
 	    var allowedOrigins = corsOrigin(env);
