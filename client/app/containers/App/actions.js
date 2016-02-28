@@ -48,10 +48,3 @@ export function bitsLoaded(bits) {
 	bits
     };
 }
-
-export const requireAuthentication = UserAuthWrapper({
-  authSelector: state => state.auth,
-  predicate: auth => auth.isAuthenticated,
-  redirectAction: push,
-  wrapperDisplayName: 'UserIsJWTAuthenticated'
-})
