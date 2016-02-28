@@ -1,8 +1,5 @@
 import {
     CHANGE_USERNAME,
-    LOGIN,
-    LOGIN_SUCCESS,
-    LOGIN_ERROR,
     LOAD_REPOS_SUCCESS,
     LOAD_REPOS,
     LOAD_REPOS_ERROR,
@@ -25,14 +22,6 @@ const initialState = fromJS({
 	username: '',
 	likes: null,
 	shares: null	
-    }),
-    user: fromJS({
-	name: '',
-	email: '',
-	username: '',
-	followers: '',
-	following: '',
-	bits: null
     })
 });
 
@@ -42,9 +31,6 @@ function globalReducer(state = initialState, action) {
       // Delete prefixed '@' from github username
       const name = action.name.replace(/@/gi, '');
       return state.setIn(['userData', 'username'], name);
-  case LOGIN:
-      return state.set('loading', 'true')
-	  .setIn(['user', 'username'], action.username)
   case LOAD_BITS:
       return state.set('loading', 'true')
 	  .setIn(['bitData', 'content'], '');

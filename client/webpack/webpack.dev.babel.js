@@ -19,7 +19,7 @@ module.exports = require('./webpack.base.babel')({
     'webpack/hot/only-dev-server',
     path.join(__dirname, '..', 'app/app.js') // Start with js/app.js
   ],
-  // Load the CSS in a style tag in development
+  // Load the CSS in a style tag in developmentu
   cssLoaders: 'style-loader!css-loader?modules&importLoaders=1&sourceMap!postcss-loader',
   // Process the CSS with PostCSS
     postcssPlugins: [

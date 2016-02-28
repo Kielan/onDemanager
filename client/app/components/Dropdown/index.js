@@ -11,7 +11,7 @@ import styles from './styles.css';
 
 @connect((state) => {
     return {
-     isAuthenticated: state.auth.isAuthenticated
+     isAuthenticated: state
     };
 })
 
@@ -24,6 +24,7 @@ class Dropdown extends React.Component {
 	}
     }
     render() {
+	console.log('connect state/props',this.props)
 	return (
 		<div>
 		<Menu>
