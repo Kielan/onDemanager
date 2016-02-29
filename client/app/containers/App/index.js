@@ -8,21 +8,22 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import { Grid } from 'react-bootstrap';
 
 import Img from 'Img';
 import Footer from 'Footer';
-import A from 'A';
 import Header from 'Header';
 
 import styles from './styles.css';
 
 class App extends React.Component {
-  render() {
-    return (
-	    <div className={ styles.wrapper }>
-	    <Header />
-        { this.props.children }
-      </div>
+    render() {
+	console.log('props.children', this.props.children)
+	return (
+	    	<Grid className={ styles.wrapper } fluid={true}>
+		<Header />
+		{ this.props.children }
+		</Grid>
     );
   }
 }

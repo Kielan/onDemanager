@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import {Grid, Col, Row } from 'react-bootstrap';
 
-import bootstrap from 'bootstrap';
 import Dropdown from 'Dropdown';
 
 import styles from './styles.css';
@@ -11,9 +11,14 @@ import styles from './styles.css';
 class Header extends React.Component {
     render() {
 	return (
-		<header className="row">
-		<h1 className={styles.logo +" col-md-2"}><Link to="/">SpeakEasy</Link></h1>
-		<div className={styles.searchNav +" col-md-8"}>
+		<Row className={styles.searchNav+" show-grid"}>
+
+		<Col md={2}>
+		<h1 className={styles.logo}><Link to="/">SpeakEasy</Link></h1>
+		</Col>
+
+		<Col md={8}>
+		<div className={styles.searchNav}>
 		<div className={styles.searchContainer}>
 		<form className={styles.searchForm}>
 		<label className="fa fa-search"></label>
@@ -21,19 +26,24 @@ class Header extends React.Component {
 		</form>
 		</div>
 		</div>
-		<div className={styles.navRightContainer + " col-md-2"}>
+		</Col>
+
+		<Col md={2}>
+		<div className={styles.navRightContainer}>
 		<ul className={styles.navRight}>
 		<li>
 		<Dropdown />
-	    </li>
-	    <li>
-	    <button>
-	    <label className="fa fa-keyboard-o"></label>
-	    </button>
-	    </li>
-	    </ul>
-	    </div>
-	    </header>
+		</li>
+		<li>
+		<button>
+		<label className="fa fa-keyboard-o"></label>
+		</button>
+		</li>
+		</ul>
+		</div>
+		</Col>
+		
+		</Row>
     )
 }
 }

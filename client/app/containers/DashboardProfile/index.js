@@ -5,7 +5,7 @@ import styles from './styles.css';
 class DashboardProfile extends React.Component {
       render() {
 	  return (
-		  <div className="col-md-3">
+		  <div >
 		  <div className={ styles.dashboardLeft}>
 		  <a className={ styles.cover }></a>
 		  <div>

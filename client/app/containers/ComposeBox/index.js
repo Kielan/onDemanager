@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import autobind from 'react-autobind';
 
 import ContentEditable from 'react-wysiwyg';
-import FileInput from 'react-file-input';
 import Dropzone from 'react-dropzone';
 
 import FilePreviewCardList from 'filePreviewCardList';

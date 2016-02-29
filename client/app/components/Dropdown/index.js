@@ -72,8 +72,10 @@ class Dropdown extends React.Component {
     }
 
 }
-
+/*
 export default connect(createSelector(
     currentUserSelector,
     (currentUser) => ({ currentUser })
 ))(Dropdown);
+*/
+export default Dropdown;

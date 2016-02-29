@@ -19,9 +19,8 @@ module.exports = (options) => {
         test: /\.js$/, // Transform all .js files required somewhere with Babel
         loader: 'babel',
         exclude: path.join(__dirname, '..', '/node_modules/'),
-          query: options.babelQuery,
-      },
-	{
+        query: options.babelQuery,
+      }, {
         test: /\.css$/, // Transform all .css files required somewhere with PostCSS
         loader: options.cssLoaders
       }, {
@@ -36,7 +35,7 @@ module.exports = (options) => {
     plugins: options.plugins.concat([
       new webpack.optimize.CommonsChunkPlugin('common.js')
     ]),
-      postcss: () => {
+    postcss: () => {
       return options.postcssPlugins;
     },
     resolve: {

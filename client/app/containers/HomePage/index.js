@@ -8,7 +8,9 @@ import { connect } from 'react-redux';
 import { routeActions } from 'react-router-redux';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 
+import {Col, Row } from 'react-bootstrap';
 import { createSelector } from 'reselect';
+
 import usernameSelector from 'usernameSelector';
 import reposSelector from 'reposSelector';
 import loadingSelector from 'loadingSelector';
@@ -51,16 +53,18 @@ class HomePage extends React.Component {
 
   render() {
     return (
-	    <article className="row">
-	    	
-	    <DashboardProfile />
+	    <Row className="show-grid">
 
-	    <div className="col-md-6">
+	    <Col md={3}>
+	    <DashboardProfile />
+	    </Col>
+	    
+	    <Col md={6}>
 	    <ComposeBox />
 	
-	    </div>
+	    </Col>
           
-      </article>
+      </Row>
     );
   }
 }

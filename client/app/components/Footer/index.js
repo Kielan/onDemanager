@@ -11,7 +11,7 @@ class Footer extends React.Component {
           <p>This project is licensed under the MIT license.</p>
         </section>
         <section>
-          <p>Made with love by <A href="https://twitter.com/kielanlemons">Kielan Lemons</A>.</p>
+          <p>Made with love by <A href="https://twitter.com/mxstbr">Max Stoiber</A>.</p>
         </section>
       </footer>
     );
