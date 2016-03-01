@@ -7,7 +7,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { routeActions } from 'react-router-redux';
 
+import { createSelector } from 'reselect';
+import loggedInSelector from 'loggedInSelector';
+
 import {Jumbotron, Input, ButtonInput } from 'react-bootstrap';
+
+import {
+login
+} from 'App/actions';
 
 import LoginForm from 'LoginForm'
 
@@ -29,9 +36,20 @@ class LoginPage extends React.Component {
     }
 
     _login(username, password) {
+	console.log('dispatch')
 	this.props.dispatch(login(username, password));
     }
 
 }
 
-export default LoginPage;
+function mapDispatchToProps(dispatch) {
+    return {
+	onLogin: (evt) => dispatch(login(username, password)),
+	dispatch
+    };
+}
+
+export default connect(createSelector(
+    loggedInSelector,
+    (username) => ({username})
+), mapDispatchToProps)(LoginPage);

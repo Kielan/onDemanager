@@ -1,27 +1,21 @@
 import {
-    LOGIN,
-    LOGIN_SUCCESS,
-    LOGIN_ERROR
+  LOGIN
 } from './constants';
 import { fromJS } from 'immutable';
 
 const initialState = fromJS({
-    isAuthenticated: false,
-    user: fromJS({
-	name: '',
-	email: '',
-	username: '',
-	followers: '',
-	following: '',
-	bits: null
-    })
-})
+    isAuthenticating: false,
+    loggedIn: false,
+    username: '',
+    password: '',
+    bits: ''
+});
 
 function authReducer(state = initialState, action) {
     switch (action.type) {
     case LOGIN:
-	return state.set('loading', 'true')
-	    .setIn(['user', 'username'], action.username)
+	console.log('state',state)
+	return state.set('isAuthenticating', 'true')
     default:
 	return state;
     }
