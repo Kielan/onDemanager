@@ -13,7 +13,7 @@ import loggedInSelector from 'loggedInSelector';
 import {Jumbotron, Input, ButtonInput } from 'react-bootstrap';
 
 import {
-login
+loginSubmit
 } from 'App/actions';
 
 import LoginForm from 'LoginForm'
@@ -36,8 +36,8 @@ class LoginPage extends React.Component {
     }
 
     _login(username, password) {
-	console.log('dispatch')
-	this.props.dispatch(login(username, password));
+	console.log('not getting form data', username, password)
+	this.props.dispatch(loginSubmit(username, password));
     }
 
 }

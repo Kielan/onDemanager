@@ -1,4 +1,12 @@
-import { LOGIN, CHANGE_USERNAME, LOAD_REPOS, LOAD_REPOS_SUCCESS } from './constants';
+import { LOGIN_SUBMIT, CHANGE_USERNAME, LOAD_REPOS, LOAD_REPOS_SUCCESS, CHANGE_FORM } from './constants';
+
+
+export function changeForm(newState) {
+    return {
+	type: CHANGE_FORM,
+	newState
+    };
+}
 
 export function changeUsername(name) {
   return {
@@ -7,11 +15,22 @@ export function changeUsername(name) {
   };
 }
 
-export function login() {
+export function loginSubmit(username, password) {
+    console.log('logindata', username, password)
     return {
-	type: LOGIN
+	type: LOGIN_SUBMIT,
+	data: {username, password}
     }
 }
+
+export function loginRequest(data) {
+    console.log('loginRequest data', data)
+    return {
+	type: LOGIN_REQUEST,
+	payload: {data}
+    }
+}
+
 
 export function loginSuccess() {
     return {
