@@ -19,9 +19,9 @@ router.get("/local", passport.authenticate('local', { session: false }), generat
 
 //passport.authenticate('local', { session: false }),
 
-router.post('/login', generateAuthData, function(req, res, next) {
-   // console.log('req');
-    return res.status(200)
+router.post('/login', passport.authenticate('local', { session: false }), generateAuthData, function(req, res, next) {
+
+    return res.status(200).send(req.data);
 });
 
 module.exports = router;

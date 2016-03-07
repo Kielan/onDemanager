@@ -13,7 +13,6 @@ import styles from './styles.css';
 class LoginForm extends React.Component {
     constructor() {
 	super();
-
     }
 
     render() {
@@ -50,7 +49,7 @@ class LoginForm extends React.Component {
 	return assign(this.props.data, change);
     }
 
-    // Emits a change of the form state to the application state
+//     Emits a change of the form state to the application state
     _emitChange(newState) {
 	this.props.dispatch(changeForm(newState));
     }

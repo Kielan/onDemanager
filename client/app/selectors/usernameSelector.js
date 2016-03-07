@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect';
-import globalSelector from 'globalSelector';
+import authSelector from 'authSelector';
 
 const usernameSelector = createSelector(
-  globalSelector,
-  (globalState) => globalState.getIn(['userData', 'username'])
+  authSelector,
+  (authState) => authState.get('username')
 );
 
 export default usernameSelector;

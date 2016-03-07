@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import autobind from 'react-autobind';
 
 import { createSelector } from 'reselect';
-import currentUserSelector from 'currentUserSelector';
+import usernameSelector from 'usernameSelector';
 
 import Menu from 'react-menu-simple';
 var MenuTrigger = Menu.MenuTrigger;
@@ -22,9 +22,9 @@ class Dropdown extends React.Component {
 	}
     }
     render() {
-	console.log('soooo', this.props.currentUser)
+	console.log('soooo', this.props.username)
 
-	const menuList = this.props.currentUser ? (
+	const menuList = this.props.username ? (
 	    		
 		<MenuOptions className={styles.MenuOptions}>
 	    	<MenuOption className={styles.MenuOption}>
@@ -36,7 +36,7 @@ class Dropdown extends React.Component {
 		
 
 		<MenuOption >
-		<Link>
+		<Link to="/settings">
 		<span>Settings</span>
 		</Link>
 		</MenuOption>
@@ -72,10 +72,14 @@ class Dropdown extends React.Component {
     }
 
 }
-/*
+
+function mapDispatchToProps(dispatch) {
+    return {
+	dispatch
+    }
+}
+
 export default connect(createSelector(
-    currentUserSelector,
-    (currentUser) => ({ currentUser })
-))(Dropdown);
-*/
-export default Dropdown;
+    usernameSelector,
+    (username) => ({ username })
+), mapDispatchToProps)(Dropdown);
