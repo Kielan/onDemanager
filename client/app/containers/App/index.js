@@ -17,7 +17,8 @@ import Header from 'Header';
 import styles from './styles.css';
 
 class App extends React.Component {
-  render() {
+    render() {
+	console.log('props.children',this.props)
     return (
 	    <div className={ styles.wrapper }>
 	    <Header />
@@ -28,4 +29,4 @@ class App extends React.Component {
 }
 
 // Wrap the component to inject dispatch and state into it
-export default connect()(App);
+export default App;

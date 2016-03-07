@@ -38,9 +38,6 @@ openSansObserver.check().then(() => {
   document.body.classList.remove(styles.jsOpenSansLoaded);
 });
 
-// Import the pages
-import App from 'App';
-
 // Import the CSS file, which HtmlWebpackPlugin transfers to the build folder
 import '../node_modules/sanitize.css/dist/sanitize.min.css';
 
@@ -65,12 +62,14 @@ if (module.hot) {
 }
 
 // Set up the router, wrapping all Routes in the App component
+import App from 'App';
 import routes from './routes';
 const rootRoute = {
   component: App,
   childRoutes: routes
 };
 
+console.log('store', store)
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory} routes={rootRoute} />

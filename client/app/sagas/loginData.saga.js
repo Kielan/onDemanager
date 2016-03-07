@@ -12,11 +12,12 @@ function checkStatus(response) {
 }
 
 function request(url, options) {
+    console.log('try this one', fetch(url, options))
   return fetch(url, options)
-    .then(checkStatus)
-    .then(parseJSON)
-    .then((data) => ({ data }))
-    .catch((err) => ({ err }));
+	.then(checkStatus)
+	.then(parseJSON)
+	.then((data) => ({ data }))
+	.catch((err) => ({ err }));
 }
 
 export function* getLoginData(getState) {
@@ -25,8 +26,9 @@ export function* getLoginData(getState) {
 	const state = yield getState();
 	const requestURL = 'http://localhost:3005/login/';
 	const login = yield call(request, requestURL);
+	console.log('login', login)
 	if (login.err === undefined || login.err === null) {
-	    console.log(login)
+	    console.log('logintext', login)
 	    yield put(loginSuccess(login));
 	} else {
 	    console.log(repos.err.response);
