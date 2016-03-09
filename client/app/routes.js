@@ -26,6 +26,14 @@ const routes = [
 	    }, 'LoginPage');
 	}
     }, {
+	path: '/profile',
+	getComponent: function get(location, cb) {
+	    require.ensure([], (require) => {
+		console.log('getting profilePage');
+		cb(null, require('ProfilePage').default);
+	    }, 'ProfilePage');
+	}
+    }, {
 	path: '*',
 	getComponent: function get(location, cb) {
 	    require.ensure([], (require) => {

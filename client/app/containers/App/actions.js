@@ -33,6 +33,7 @@ export function loginRequest(data) {
 
 
 export function loginSuccess(data) {
+    localStorage.setItem('token', data.accessToken)
     return {
 	type: LOGIN_SUCCESS,
 	user : {data}

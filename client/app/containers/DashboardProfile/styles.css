@@ -1,40 +1,58 @@
 .dashboardLeft {
     border: 1px solid #e1e8ed;
     background: #FFF;
-    border-radius: .1rem;
+    border-radius: 4px 4px 0 0;
     
-    .cover {
-	background-size: 100%;
-	border-bottom: 1px solid #e1e8ed;
-	height: 95px;
-	display: block;
-	border-radius: 4px 4px 0 0;
-	background-position: 0 50%;
-	width: 100%;
-	background-image: url(https://d2gn4xht817m0g.cloudfront.net/p/profiles/cover_photos/background/000/350/904/350904-b2efaf431d8f81a2d837bb7fd30cc38912992884.jpg?1450642055);
-        background-color: #000000 !important;
-	}
-    
-    .DashboardProfileAvatar {
-	background-color: #fff;
-	border-radius: 6px;
-	margin: -30px 0 0 8px;
-	padding: 1px;
-	vertical-align: bottom;
 
-	img {
-	    border: .2rem solid #fff;
-	    border-radius: .2rem;
-	    width: 3rem;
-	    height: 3rem;
-	}
-    }
+}
+
+.DashboardProfileAvatar {
+    border-radius: 6px;
+    margin: -30px 0 0 8px;
+    padding: 1px;
+    vertical-align: text-bottom;
+    width: 4.25rem;
+    height: 4.25rem;
+    display: inline-block;
+}
+
+.profileAvatarImage {
+	border: .2rem solid #fff;
+	border-radius: .2rem;
+	width: 100%;
+	height: 100%;
+}
+
+.cover {
+    background-size: 100%;
+    border-bottom: 1px solid #e1e8ed;
+    height: 95px;
+    display: block;
+    border-radius: 4px 4px 0 0;
+    background-position: 0 50%;
+    width: 100%;
+    background-image: url(https://d2gn4xht817m0g.cloudfront.net/p/profiles/cover_photos/background/000/350/904/350904-b2efaf431d8f81a2d837bb7fd30cc38912992884.jpg?1450642055);
+    background-color: #000000 !important;
 }
 
 .stats {
     display: flex;
-    align-items: space-around;
+    align-content: space-around;
     span {
 	display: block;
     }
+}
+
+.DashboardProfileUsername {
+        display: inline;
+	position: absolute;
+
+}
+
+.UsernameSpan {
+    font-size: 18px;
+}
+
+.UsernameA {
+    color: black;
 }

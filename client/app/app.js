@@ -72,9 +72,16 @@ const rootRoute = {
   childRoutes: routes
 };
 
+//set up router for pages behind auth wall
+import protectedRoutes from './protectedRoutes';
+const protectedRoute = {
+    component: App,
+    childRoutes: protectedRoutes
+}
+
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={useScroll(() => browserHistory)()} routes={rootRoute} />
+	<Router history={useScroll(() => browserHistory)()} routes={rootRoute} />
   </Provider>,
   document.getElementById('app')
 );
