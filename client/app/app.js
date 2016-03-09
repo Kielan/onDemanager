@@ -43,7 +43,7 @@ openSansObserver.check().then(() => {
 import App from 'App';
 
 // Import the CSS file, which HtmlWebpackPlugin transfers to the build folder
-import '../node_modules/sanitize.css/dist/sanitize.min.css';
+import '../node_modules/sanitize.css/sanitize.css';
 
 /*
 *   Create the store with two middlewares :
