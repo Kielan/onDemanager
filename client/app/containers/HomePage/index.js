@@ -8,11 +8,14 @@ import { connect } from 'react-redux';
 import { routeActions } from 'react-router-redux';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 
+import {Col, Row } from 'react-bootstrap';
 import { createSelector } from 'reselect';
+
 import usernameSelector from 'usernameSelector';
 import reposSelector from 'reposSelector';
 import loadingSelector from 'loadingSelector';
 import errorSelector from 'errorSelector';
+import loggedInSelector from 'loggedInSelector';
 
 import {
   changeUsername,
@@ -49,18 +52,21 @@ class HomePage extends React.Component {
     this.onChangeRoute('/features');
   }
 
-  render() {
+    render() {
+	console.log('this.props.loggedIn', this.props.loggedIn)
     return (
-	    <article className="row">
-	    	
-	    <DashboardProfile />
+	    <Row className="show-grid">
 
-	    <div className="col-md-6">
+	    <Col md={3}>
+	    <DashboardProfile />
+	    </Col>
+	    
+	    <Col md={6}>
 	    <ComposeBox />
 	
-	    </div>
+	    </Col>
           
-      </article>
+      </Row>
     );
   }
 }
@@ -78,9 +84,10 @@ function mapDispatchToProps(dispatch) {
 
 // Wrap the component to inject dispatch and state into it
 export default connect(createSelector(
-  reposSelector,
-  usernameSelector,
-  loadingSelector,
-  errorSelector,
-  (repos, username, loading, error) => ({ repos, username, loading, error })
+    reposSelector,
+    usernameSelector,
+    loadingSelector,
+    loggedInSelector,  
+    errorSelector,
+    (repos, username, loading, loggedIn, error) => ({ repos, username, loading, loggedIn, error })
 ), mapDispatchToProps)(HomePage);

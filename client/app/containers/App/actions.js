@@ -1,6 +1,12 @@
-import { UserAuthWrapper } from 'redux-auth-wrapper'
-import { push } from 'react-router-redux';
-import { CHANGE_USERNAME, LOGIN, LOGIN_SUCCESS, LOAD_BITS, LOAD_BITS_SUCCESS, LOAD_REPOS, LOAD_REPOS_SUCCESS } from './constants';
+import { LOGIN_SUBMIT, LOGIN_SUCCESS, CHANGE_USERNAME, LOAD_REPOS, LOAD_REPOS_SUCCESS, CHANGE_FORM } from './constants';
+
+
+export function changeForm(newState) {
+    return {
+	type: CHANGE_FORM,
+	newState
+    };
+}
 
 export function changeUsername(name) {
   return {
@@ -9,16 +15,28 @@ export function changeUsername(name) {
   };
 }
 
-export function login() {
+export function loginSubmit(username, password) {
+    console.log('logindata', username, password)
     return {
-	type: LOGIN
+	type: LOGIN_SUBMIT,
+	data: {username, password}
     }
 }
 
-export function loginSuccess(user) {
+export function loginRequest(data) {
+    console.log('loginRequest data', data)
+    return {
+	type: LOGIN_REQUEST,
+	payload: {data}
+    }
+}
+
+
+export function loginSuccess(data) {
+    localStorage.setItem('token', data.accessToken)
     return {
 	type: LOGIN_SUCCESS,
-	user
+	user : {data}
     }
 }
 
@@ -35,16 +53,3 @@ export function reposLoaded(repos) {
   };
 }
 
-
-export function loadBits() {
-    return {
-	type: LOAD_BITS
-    };
-}
-
-export function bitsLoaded(bits) {
-    return {
-	type: LOAD_BITS_SUCCESS,
-	bits
-    };
-}

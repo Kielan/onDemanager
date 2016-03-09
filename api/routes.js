@@ -10,8 +10,17 @@ router.get("/token/valid", passport.authenticate("jwt", { session: false }), fun
     return res.sendStatus(200)
 });
 
+/*
+router.get("/local", passport.authenticate('local', { session: false }), generateAuthData, function(req, res, next) {
+    console.log('local')
+    return res.status(200).send(req.data);
+});
+*/
 
-router.post("/local", passport.authenticate('local', { session: false }), generateAuthData, function(req, res, next) {
+//passport.authenticate('local', { session: false }),
+
+router.post('/login', passport.authenticate('local', { session: false }), generateAuthData, function(req, res, next) {
+
     return res.status(200).send(req.data);
 });
 

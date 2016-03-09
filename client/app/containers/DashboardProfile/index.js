@@ -5,21 +5,22 @@ import styles from './styles.css';
 class DashboardProfile extends React.Component {
       render() {
 	  return (
-		  <div className="col-md-3">
 		  <div className={ styles.dashboardLeft}>
 		  <a className={ styles.cover }></a>
+		  
+		  <div>
+		  <a className={styles.DashboardProfileAvatar}>
+		  <img className={styles.profileAvatarImage} src="https://pbs.twimg.com/profile_images/694099768834797568/IvPKkR0E_bigger.jpg"></img>
+		  </a>
+		  <div className={styles.DashboardProfileUsername}>		  
+		  <span className={styles.UsernameSpan}>
+		  <a className={styles.UsernameA}>@<span>KielanLemons</span></a>
+		  </span>
+		  </div>
+		  </div>
+		  
 		  <div>
 
-		  <a className={styles.DashboardProfileAvatar}>
-		  <img src="https://pbs.twimg.com/profile_images/694099768834797568/IvPKkR0E_bigger.jpg"></img>
-		  </a>
-		  <div>
-		  
-		  <div><a>Kielan Lemons</a></div>
-		  
-		  <span>
-		  <a>"@"<span>KielanLemons</span></a>
-		  </span>
 
 		  <div className={styles.stats}>
 		  <a>
@@ -41,8 +42,6 @@ class DashboardProfile extends React.Component {
 		  <span className="">Joined June 2013</span>
 		  </div>
 		  
-		  </div>
-		  </div>
 		  </div>
 		  </div>
 	  )

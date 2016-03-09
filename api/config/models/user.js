@@ -8,6 +8,12 @@ var UserSchema = new Schema({
     email: String,
     username: String,
     provider: String,
+    services: {
+	password: {
+	    bcrypt: String,
+	    reset: Schema.Types.Mixed
+	}
+    },
     hashedPassword: String,
     salt: String,
     followers: [{type: Schema.ObjectId, ref: 'User'}],
@@ -44,4 +50,4 @@ UserSchema.methods = {
     }
 }
 
-mongoose.model('User', UserSchema);
+global.User = mongoose.model('User', UserSchema);

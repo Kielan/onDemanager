@@ -6,10 +6,10 @@
 import { combineReducers } from 'redux-immutable';
 import { routeReducer } from 'react-router-redux';
 import globalReducer from 'App/reducer';
-import auth from 'App/authReducer';
+import authReducer from 'App/authReducer';
 
 export default combineReducers({
-    auth,
     route: routeReducer,
-    global: globalReducer
+    global: globalReducer,
+    auth: authReducer
 });

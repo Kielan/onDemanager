@@ -36,7 +36,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 console.log(">> Loading auth middleware".bold.white);
-passport.use(middleware("auth/login.passport.js"));
+passport.use(middleware("local/localStrategy.passport.js"));
 
 console.log('>> Loading router'.bold.white);
 app.use('/api', require('./routes'))

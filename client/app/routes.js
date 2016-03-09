@@ -4,35 +4,43 @@
 // about the require.ensure code splitting business
 
 const routes = [
-  {
-    path: '/',
-    getComponent: function get(location, cb) {
-      require.ensure([], (require) => {
-        cb(null, require('HomePage').default);
-      }, 'HomePage');
+    {
+	path: '/',
+	getComponent: function get(location, cb) {
+	    require.ensure([], (require) => {
+		cb(null, require('HomePage').default);
+	    }, 'HomePage');
+	}
+    }, {
+	path: '/features',
+	getComponent: function get(location, cb) {
+	    require.ensure([], (require) => {
+		cb(null, require('FeaturePage').default);
+	    }, 'FeaturePage');
+	}
+    }, {
+	path: '/login',
+	getComponent: function get(location, cb) {
+	    require.ensure([], (require) => {
+		cb(null, require('LoginPage').default);
+	    }, 'LoginPage');
+	}
+    }, {
+	path: '/profile',
+	getComponent: function get(location, cb) {
+	    require.ensure([], (require) => {
+		console.log('getting profilePage');
+		cb(null, require('ProfilePage').default);
+	    }, 'ProfilePage');
+	}
+    }, {
+	path: '*',
+	getComponent: function get(location, cb) {
+	    require.ensure([], (require) => {
+		cb(null, require('NotFoundPage').default);
+	    }, 'NotFoundPage');
+	}
     }
-  }, {
-    path: '/profile',
-    getComponent: function get(location, cb) {
-	require.ensure([], (require) => {
-        cb(null, require('ProfilePage').default);
-      }, 'ProfilePage')
-    }
-  }, {
-    path: '/features',
-    getComponent: function get(location, cb) {
-      require.ensure([], (require) => {
-        cb(null, require('FeaturePage').default);
-      }, 'FeaturePage');
-    }
-  }, {
-    path: '*',
-    getComponent: function get(location, cb) {
-      require.ensure([], (require) => {
-        cb(null, require('NotFoundPage').default);
-      }, 'NotFoundPage');
-    }
-  }
 ];
 
 export default routes;
