@@ -35,24 +35,87 @@
     background-color: #000000 !important;
 }
 
-.stats {
-    display: flex;
-    align-content: space-around;
-    span {
+.DashboardProfileContent {
+        margin-left: 1rem;
+	margin-right: 1rem;
+}
+
+.DashboardProfileAvatarName {
+    margin-bottom: 1rem;
+    display: inline-block;
+    color: black;
+    margin-left: .4rem;
+    cursor: pointer;
+
+    &:hover {
+	text-decoration: none;
+    }
+    
+    a {
 	display: block;
+	color: black;
+	font-size: 18px;
+	font-weight: 600;
+	&:hover {
+	    text-decoration: none;
+	}
     }
 }
 
-.DashboardProfileUsername {
-        display: inline;
-	position: absolute;
-
+.DashboardProfileAvatarID {
+    a {
+    font-size: 12px;
+    color: #66757f;
+    line-height: 16px;
+    font-weight: normal;
+    }
 }
 
-.UsernameSpan {
-    font-size: 18px;
+.stats {
+    display: flex;
+    align-content: space-between;
+    span {
+	display: block;
+
+    }
 }
 
-.UsernameA {
+.statsItem {
+    display: flex;
+    flex-direction: column;
     color: black;
+    cursor: pointer;
+    flex: 1;
+   
+}
+
+.statsItem:hover {
+    text-decoration: none;
+}
+
+.statsItemName {
+    text-transform: uppercase;
+}
+
+.statsItemCount {
+    font-size: 18px;
+    font-weight: 500;
+    padding-top: 3px;
+    font-weight: 600;
+}
+
+.DashboardProfileInfo {
+    line-height: 2rem;
+    i {
+	font-size: 1.15rem;
+	margin-left: .1rem;
+	margin-right: .5rem;
+    }
+    span {
+	vertical-align: top;
+    }
+}
+
+.DashboardProfileBio {
+    margin: 1rem 0 1rem 0;
 }

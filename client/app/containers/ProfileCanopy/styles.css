@@ -1,3 +1,50 @@
 .Cover {
 
 }
+
+.profileNav {
+    display: block;
+
+    li {
+	display: inline-block;
+	a {
+	    display: block;
+	    padding: 14px 15px 7px;
+	    transition: all .15s ease-in-out;
+	    box-sizing: border-box;
+	    height: 4rem;
+	    cursor: pointer;
+
+	    &:hover {
+		border-bottom-width: 4px;
+		text-decoration: none;
+	    }
+	    
+	    .label {
+		font-size: 11px;
+		display: block;
+		color: #66757f;
+		text-transform: uppercase;
+	    }
+	    .value {
+		color: #66757f;
+		font-size: 18px;
+		font-weight: 600;
+	    }
+	}
+    }
+}
+
+.editProfile {
+    font-size: 1.5rem;
+    border: 1px solid rgba(0, 0, 0, .0);
+    cursor: pointer;
+    padding: .3rem;
+
+    &:hover {
+	    border: 1px solid rgba(0, 0, 0, .5);
+	    border-radius: .2rem;
+	    background-color: rgba(255,255,255,0.25);
+	    background-image: linear-gradient(rgba(255,255,255,0),rgba(0,132,180,0.1));
+    }
+}
