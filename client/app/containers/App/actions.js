@@ -1,4 +1,4 @@
-import { LOGIN_SUBMIT, LOGIN_SUCCESS, CHANGE_USERNAME, LOAD_REPOS, LOAD_REPOS_SUCCESS, CHANGE_FORM } from './constants';
+import { LOGIN_SUBMIT, LOGIN_SUCCESS, CHANGE_USERNAME, LOAD_REPOS, LOAD_REPOS_SUCCESS, CHANGE_FORM, LOAD_BITS, LOAD_BITS_SUCCESS } from './constants';
 
 
 export function changeForm(newState) {
@@ -37,6 +37,19 @@ export function loginSuccess(data) {
     return {
 	type: LOGIN_SUCCESS,
 	user : {data}
+    }
+}
+
+export function loadBits() {
+    return {
+	type: LOAD_BITS
+    }
+}
+
+export function bitsLoaded(bits) {
+    return {
+	type: LOAD_BITS_SUCCESS,
+	bits
     }
 }
 

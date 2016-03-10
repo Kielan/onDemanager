@@ -6,3 +6,5 @@ export const LOAD_REPOS_SUCCESS = 'boilerplate/App/LOAD_REPOS_SUCCESS';
 export const LOAD_REPOS_ERROR = 'boilerplate/App/LOAD_REPOS_ERROR';
 export const CHANGE_USERNAME = 'boilerplate/App/CHANGE_USERNAME';
 export const CHANGE_FORM = 'boilerplate/App/CHANGE_FORM';
+export const LOAD_BITS = 'boilerplate/App/CHANGE_FORM';
+export const LOAD_BITS_SUCCESS = 'boilerplate/App/LOAD_BITS_SUCCESS';

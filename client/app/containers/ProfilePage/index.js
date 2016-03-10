@@ -10,6 +10,13 @@ import { routeActions } from 'react-router-redux';
 
 import autobind from 'react-autobind';
 
+import {
+    loadBits
+} from 'App/actions';
+
+import {Col, Row } from 'react-bootstrap';
+import { createSelector } from 'reselect';
+
 import ComposeBox from 'ComposeBox';
 import ProfileCanopy from 'ProfileCanopy';
 
@@ -20,14 +27,19 @@ class ProfilePage extends React.Component {
     super();
       autobind(this);
   }
+
+    componentDidMount() {
+	var enbl = this.props.onInitialBits()
+	console.log('enbl', enbl);
+    }
     
     render() {
 	return (
 	        <article >
 		<ProfileCanopy />
 		
-	    <div className="row">
-		<div className="col-md-3">
+		<Row className={styles.profileContainer}>
+		<Col md={3}>
 
 		<div>
 		<div className={styles.ProfileAvatar}>
@@ -46,11 +58,11 @@ class ProfilePage extends React.Component {
 		</div>
 		</div>
 		
-		</div>
-		<div className="col-md-6">
+		</Col>
+		<Col md={6}>
 		<ComposeBox />
-		</div>
-		</div>
+		</Col>
+		</Row>
 	    </article>
 	)
     }
@@ -65,7 +77,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    changeRoute: (url) => dispatch(routeActions.push(url))
+      changeRoute: (url) => dispatch(routeActions.push(url)),
+      onInitialBits: (evt) => dispatch(loadBits()),
+      dispatch
   };
 }
 
