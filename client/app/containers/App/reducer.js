@@ -23,7 +23,7 @@ function globalReducer(state = initialState, action) {
     switch (action.type) {
     case LOAD_BITS_SUCCESS:
 	console.log('find bits in thar', action)
-	return state.setIn(['userData', 'bits'], action)
+	return state.setIn(['userData', 'bits'], action.bits)
     case CHANGE_USERNAME:
 	// Delete prefixed '@' from github username
 	const name = action.name.replace(/@/gi, '');

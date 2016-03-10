@@ -17,6 +17,9 @@ import {
 import {Col, Row } from 'react-bootstrap';
 import { createSelector } from 'reselect';
 
+import bitsSelector from 'bitsSelector';
+
+import BitList from 'BitList';
 import ComposeBox from 'ComposeBox';
 import ProfileCanopy from 'ProfileCanopy';
 
@@ -29,11 +32,14 @@ class ProfilePage extends React.Component {
   }
 
     componentDidMount() {
-	var enbl = this.props.onInitialBits()
-	console.log('enbl', enbl);
+//	var enbl = this.props.onInitialBits();
+//	console.log('enbl', this.props.bits);
     }
     
     render() {
+	var enbl = this.props.onInitialBits();
+	console.log('enbl', this.props.bits);
+	
 	return (
 	        <article >
 		<ProfileCanopy />
@@ -61,6 +67,7 @@ class ProfilePage extends React.Component {
 		</Col>
 		<Col md={6}>
 		<ComposeBox />
+		<BitList data={this.props.bits} />
 		</Col>
 		</Row>
 	    </article>
@@ -83,4 +90,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);
+export default connect(createSelector(
+    bitsSelector,
+    (bits) => ({ bits })
+), mapDispatchToProps)(ProfilePage);

@@ -27,12 +27,12 @@ export function* getBitsData(getState) {
     while(true) {
 	yield take(LOAD_BITS);
 	const state = yield getState();
-	const requestURL = 'http://localhost:3005/bitStream/';
+	const requestURL = 'http://localhost:3005/api/bits';
 	const bits = yield call(request, requestURL);
 	if (bits.err === undefined || bits.err === null) {
 	    yield put(bitsLoaded(bits.data));
 	} else {
-	    console.log(repos.err.response);
+	    console.log(bits.err.response);
 	}
     }
 }
