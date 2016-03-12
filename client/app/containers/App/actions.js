@@ -1,4 +1,4 @@
-import { LOGIN_SUBMIT, LOGIN_SUCCESS, CHANGE_USERNAME, LOAD_REPOS, LOAD_REPOS_SUCCESS, CHANGE_FORM, LOAD_BITS, LOAD_BITS_SUCCESS } from './constants';
+import { LOGIN_SUBMIT, LOGIN_SUCCESS, CHANGE_USERNAME, LOAD_REPOS, LOAD_REPOS_SUCCESS, CHANGE_FORM, CHANGE_COMPOSE_BOX, LOAD_BITS, LOAD_BITS_SUCCESS, BIT_COMMIT_SUBMIT } from './constants';
 
 
 export function changeForm(newState) {
@@ -6,6 +6,13 @@ export function changeForm(newState) {
 	type: CHANGE_FORM,
 	newState
     };
+}
+
+export function changeComposeBox(ComposeBoxState) {
+    return {
+	type: CHANGE_COMPOSE_BOX,
+	ComposeBoxState
+    }
 }
 
 export function changeUsername(name) {
@@ -66,3 +73,10 @@ export function reposLoaded(repos) {
   };
 }
 
+export function bitCommitSubmit(bit) {
+    console.log('bitCommitSubmit action', bit)
+    return {
+	type: BIT_COMMIT_SUBMIT,
+	bit
+    }
+}

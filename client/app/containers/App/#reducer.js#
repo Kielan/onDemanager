@@ -25,6 +25,9 @@ const initialState = fromJS({
 
 function globalReducer(state = initialState, action) {
     switch (action.type) {
+    case BIT_COMMIT_SUBMIT:
+	console.log('bitcommitsubmitnigga', action)
+	
     case LOAD_BITS_SUCCESS:
 	console.log('find bits in thar', action)
 	return state.setIn(['userData', 'bits'], action.bits)

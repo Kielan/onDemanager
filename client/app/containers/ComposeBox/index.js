@@ -1,11 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import autobind from 'react-autobind';
+import { connect } from 'react-redux';
+
+import { ButtonInput } from 'react-bootstrap';
+import { createSelector } from 'reselect';
+
+import composeBoxContentSelector from 'composeBoxContentSelector';
+
+import {
+    bitCommitSubmit,
+    changeComposeBox
+} from 'App/actions';
 
 import ContentEditable from 'react-wysiwyg';
 import Dropzone from 'react-dropzone';
 
 import FilePreviewCardList from 'filePreviewCardList';
+
+const assign = Object.assign || require('object.assign');
 
 import styles from './styles.css';
 
@@ -30,7 +43,10 @@ class ComposeBox extends React.Component {
 	    synthFocusDisplay: false,
 	    synthUnfocusDisplay: true,
 	    showFiles: false,
-	    files: []
+	    files: [],
+	    formState: {
+		content: ''
+	    }
 	}
     }
 
@@ -107,7 +123,12 @@ class ComposeBox extends React.Component {
 
 	console.log('showfiles: ', this.state.showFiles, 'files: ', this.state.files)
     }
-    
+
+    onComposeBit (evt) {
+	evt.preventDefault();
+	this.props._onBitCommit(this.state.formState.content)
+    }
+
     render (){
 
 	var isValid = (this.state.maxLength >= this.state.totalLength)
@@ -130,6 +151,7 @@ class ComposeBox extends React.Component {
 
 	return (
 		<div className={styles.composeBox}>
+		<form onSubmit={this.onComposeBit.bind(this)}>
 		<div aria-live='polite'>{this.state.error}</div>
 		<div className={styles.profileIcon}><img src="https://pbs.twimg.com/profile_images/694099768834797568/IvPKkR0E_bigger.jpg"></img></div>
 		<div ref="quickUpload" style={toggleDisplayFocus(this.state.synthUnfocusDisplay)}>
@@ -170,20 +192,37 @@ class ComposeBox extends React.Component {
 		Location disabled
 	    </div>
 		<div className={styles.sendStat}>
-	    <div id="content-length">
+		<div id="content-length">
 		{this.state.maxLength - this.state.totalLength}
             </div>
-		<button className={styles.send}>
-		<i className="fa fa-keyboard-o"></i>
-		</button>
+		<ButtonInput type="submit" value="compose" className={styles.send} />
 		</div>
 		
+	    </div>
 		</div>
-		</div>
+		</form>
 		</div>
 	);
     }
 
+    _changeComposeContent(evt) {
+	var newState = this._mergeWithCurrentState({
+	    content: evt.target.value
+	});
+
+	this._emitChange(newState);
+    }
+
+    // Merges the current state with a change
+    _mergeWithCurrentState(change) {
+	return assign(this.state.formState, change);
+    }
+
+    //     Emits a change of the form state to the application state
+    _emitChange(newState) {
+	this.props.dispatch(changeComposeBox(newState));
+    }
+    
     enableEditing() {
 	var editing = !this.state.editing;
 	
@@ -213,7 +252,15 @@ class ComposeBox extends React.Component {
 	} else {
 
 	    var copy = text.slice(0, this.state.maxLength)
+	    console.log('is this the text?', copy)
 
+	    //save in store
+	    var newState = this._mergeWithCurrentState({
+		content: copy
+	    });
+	    
+	    this._emitChange(newState);
+	    
 	    // mutations
 	    // @name
 	    var regex = /(^|[^@\w])@(\w{1,15})\b/g
@@ -242,4 +289,18 @@ class ComposeBox extends React.Component {
 
 };
 
-module.exports = ComposeBox;
+function mapDispatchToProps(dispatch) {
+    return {
+	_onBitCommit: (bit) => {
+	    console.log('in compose form', bit);
+
+	    dispatch(bitCommitSubmit(bit))
+	},
+	dispatch
+    }
+}
+
+export default connect(createSelector(
+    composeBoxContentSelector,
+    (composeBoxContent) => ({composeBoxContent})
+), mapDispatchToProps)(ComposeBox);

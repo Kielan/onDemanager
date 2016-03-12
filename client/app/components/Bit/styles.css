@@ -1,0 +1,30 @@
+section {
+    cursor: pointer;
+    padding: 9px 12px;
+    Background-color: white;
+    border-left: 1px solid #e1e8ed;
+    border-right: 1px solid #e1e8ed;
+    border-bottom: 1px solid #e1e8ed;
+    
+    &:hover {
+	background-color: #f5f8fa;
+    }
+}
+
+.itemHeader {
+    a {
+	color: 292f33;
+	img {
+	    
+	}
+	strong {
+	    font-weight: bold;
+	    color: #292f33;
+	}
+	b {
+	    font-size: 13px;
+	    color: #8899a6;
+	    font-weight: normal;
+	}
+    }
+}

@@ -13,7 +13,7 @@ import loggedInSelector from 'loggedInSelector';
 import {Jumbotron, Input, ButtonInput } from 'react-bootstrap';
 
 import {
-loginSubmit
+    loginSubmit
 } from 'App/actions';
 
 import LoginForm from 'LoginForm'

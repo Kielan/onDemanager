@@ -29,7 +29,6 @@ function request(url, options) {
 export function* getLoginData(getState) {
     while(true) {
 	var {data} = yield take(LOGIN_SUBMIT);
-	console.log('yield date', data)
 	const state = yield getState();
 	const username = state.getIn(['auth', 'userData', 'username']);
 	const requestURL = 'http://localhost:3005/api/login';

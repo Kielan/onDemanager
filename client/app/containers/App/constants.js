@@ -8,3 +8,5 @@ export const CHANGE_USERNAME = 'boilerplate/App/CHANGE_USERNAME';
 export const CHANGE_FORM = 'boilerplate/App/CHANGE_FORM';
 export const LOAD_BITS = 'boilerplate/App/LOAD_BITS';
 export const LOAD_BITS_SUCCESS = 'boilerplate/App/LOAD_BITS_SUCCESS';
+export const BIT_COMMIT_SUBMIT = 'boilerplate/App/BIT_COMMIT_SUBMI';
+export const CHANGE_COMPOSE_BOX = 'boilerplate/App/CHANGE_COMPOSE_BOX'; 

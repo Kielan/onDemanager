@@ -20,6 +20,7 @@ class BitList extends React.Component {
 	return (
 		<div>
 		{bitPosts}
+	    <span>what is happening</span>
 	    </div>
 	)
     }
