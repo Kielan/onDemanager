@@ -17,7 +17,7 @@ function validatePassword(password, encryptedPassword, callback) {
 };
 
 module.exports = new LocalStrategy({ passReqToCallback: true }, function(req, email, password, done) {
-    console.log('pasing to strategy email', done )
+    console.log('passing to strategy email', req, email, password )
     
 	User.findOne({
 		"emails.address": email

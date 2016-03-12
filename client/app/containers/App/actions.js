@@ -77,6 +77,6 @@ export function bitCommitSubmit(bit) {
     console.log('bitCommitSubmit action', bit)
     return {
 	type: BIT_COMMIT_SUBMIT,
-	bit
+	bit: { bit }
     }
 }
