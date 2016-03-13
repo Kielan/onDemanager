@@ -5,7 +5,10 @@ import {
     LOAD_REPOS_ERROR,
     LOAD_BITS_SUCCESS,
     LOAD_BITS_ERROR,
-    BIT_COMMIT_SUBMIT
+    BIT_COMMIT_SUBMIT,
+    EDIT_PROFILE,
+    CANCEL_EDIT_PROFILE,
+    SAVE_EDIT_PROFILE
 } from './constants';
 import { fromJS } from 'immutable';
 
@@ -13,18 +16,28 @@ const initialState = fromJS({
     loading: false,
     error: false,
     currentUser: false,
+    profileEditing: false,
     userData: fromJS({
 	repositories: false,
 	username: '',
 	bits: null
     }),
     ComposeBoxState: {
-	content: ""
+	content: ''
     }
 });
 
 function globalReducer(state = initialState, action) {
     switch (action.type) {
+    case EDIT_PROFILE:
+	var toggle = state.get('profileEditing')
+	console.log('meh toggle', toggle);
+	return state.set('profileEditing', 'true')
+    case CANCEL_EDIT_PROFILE:
+	console.log('cancel edit profile')
+	return state.set('profileEditing', false)
+    case SAVE_EDIT_PROFILE:
+	return state.set('profileEditing', false)
     case BIT_COMMIT_SUBMIT:
 	console.log('bitcommitsubmitnigga', action)
 	

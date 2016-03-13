@@ -10,3 +10,6 @@ export const LOAD_BITS = 'boilerplate/App/LOAD_BITS';
 export const LOAD_BITS_SUCCESS = 'boilerplate/App/LOAD_BITS_SUCCESS';
 export const BIT_COMMIT_SUBMIT = 'boilerplate/App/BIT_COMMIT_SUBMI';
 export const CHANGE_COMPOSE_BOX = 'boilerplate/App/CHANGE_COMPOSE_BOX'; 
+export const EDIT_PROFILE = 'boilerplate/App/EDIT_PROFILE';
+export const CANCEL_EDIT_PROFILE = 'boilerplate/App/CANCEL_EDIT_PROFILE';
+export const SAVE_EDIT_PROFILE = 'boilerplate/App/SAVE_EDIT_PROFILE';

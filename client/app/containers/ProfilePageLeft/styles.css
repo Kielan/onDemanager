@@ -1,0 +1,71 @@
+.ProfileAvatar {
+    width: 11rem;
+    height: 11rem;
+    border: 5px solid #fff;
+    border-radius: .3rem;
+    cursor: pointer;
+    
+    img {
+	height: 100%;
+	width: 100%;
+	border-radius: .3rem;
+    }
+}
+
+.ProfileSidebar {
+
+}
+
+.ProfileHeaderCard {
+    a {
+	margin: 0px;
+	max-height: 0.25rem;
+    }
+    h1 {
+	margin: 0;
+	white-space: nowrap;
+	a {
+	    color: black;
+	}
+    }
+    h2 {
+	margin: 0;
+	a {
+	    height: 12px;
+	}
+	    span {
+		color: black;
+		font-size: 14px;
+		color: #8899a6;
+	}
+    }
+}
+
+.profileSideOffset {
+    position: absolute;
+    width: 100%;
+    z-index: 50;
+    top: -10rem;
+}
+
+.ProfileHeaderBio {
+    word-wrap: break-word;
+
+}
+
+.ProfileHeaderCardEditing {
+    background-color: #e5e5e5;
+    border-radius: .1rem;
+    display: none;
+
+    .active {
+	display: block;
+
+	.input {
+	    background-color: #fff;
+	    border: 1px solid #e1e8ed;
+	    display: inline-block;
+	}
+    }
+
+}

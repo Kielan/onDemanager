@@ -1,4 +1,4 @@
-import { LOGIN_SUBMIT, LOGIN_SUCCESS, CHANGE_USERNAME, LOAD_REPOS, LOAD_REPOS_SUCCESS, CHANGE_FORM, CHANGE_COMPOSE_BOX, LOAD_BITS, LOAD_BITS_SUCCESS, BIT_COMMIT_SUBMIT } from './constants';
+import { LOGIN_SUBMIT, LOGIN_SUCCESS, CHANGE_USERNAME, LOAD_REPOS, LOAD_REPOS_SUCCESS, CHANGE_FORM, CHANGE_COMPOSE_BOX, LOAD_BITS, LOAD_BITS_SUCCESS, BIT_COMMIT_SUBMIT, EDIT_PROFILE, CANCEL_EDIT_PROFILE, SAVE_EDIT_PROFILE } from './constants';
 
 
 export function changeForm(newState) {
@@ -78,5 +78,17 @@ export function bitCommitSubmit(author, date, content) {
     return {
 	type: BIT_COMMIT_SUBMIT,
 	bit: { author: author, date: date, content: content }
-    }
+    };
+}
+
+export function editProfile() {
+    return {
+	type: EDIT_PROFILE
+    };
+}
+
+export function cancelEditProfile() {
+    return {
+	type: CANCEL_EDIT_PROFILE
+    };
 }

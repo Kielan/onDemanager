@@ -19,23 +19,23 @@ function validatePassword(password, encryptedPassword, callback) {
 module.exports = new LocalStrategy({ passReqToCallback: true }, function(req, email, password, done) {
     console.log('passing to strategy email', req, email, password )
     
-	User.findOne({
-		"emails.address": email
-	}, function(err, user) {
-		if (err) return done(err);
-		if (!user) return done(null, false, "email was not found.");
+    User.findOne({
+	"emails.address": email
+    }, function(err, user) {
+	if (err) return done(err);
+	if (!user) return done(null, false, "email was not found.");
 
-	    console.log('user for user', user)
-	    var encryptedPassword = user.services.password ? user.services.password.bcrypt : null;
-	    console.log('encrypted pass', encryptedPassword);
-	    
-		validatePassword(password, encryptedPassword, function(err, isMatch) {
-			if (err) return next(err);
-			if (!isMatch) return done(null, false, "email/password is incorrect");
+	console.log('user for user', user)
+	var encryptedPassword = user.services.password ? user.services.password.bcrypt : null;
+	console.log('encrypted pass', encryptedPassword);
+	
+	validatePassword(password, encryptedPassword, function(err, isMatch) {
+	    if (err) return next(err);
+	    if (!isMatch) return done(null, false, "email/password is incorrect");
 
-		    console.log('end of the line', _.pick(user.toObject(), "_id", "profile"))
-			return done(null, _.pick(user.toObject(), "_id", "profile"));
-		});
-	    console.log('done', done)
+	    console.log('end of the line', _.pick(user.toObject(), "_id", "profile"))
+	    return done(null, _.pick(user.toObject(), "_id", "profile"));
 	});
+	console.log('done', done)
+    });
 });

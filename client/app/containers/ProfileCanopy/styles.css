@@ -52,3 +52,43 @@ nav {
 	    background-image: linear-gradient(rgba(255,255,255,0),rgba(0,132,180,0.1));
     }
 }
+
+.cancelEdit {
+    background-image: linear-gradient(#fff,#f5f8fa);
+    background-repeat: no-repeat;
+    border: 1px solid #e1e8ed;
+    border-radius: 4px;
+    color: #66757f;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: normal;
+    padding: 8px 16px;
+    position: relative;
+}
+
+.saveEdit {
+       color: #fff;
+    background-color: #1da1f2;
+    background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.05));
+    border: 1px solid #3b88c3;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: normal;
+    padding: 8px 16px;
+    position: relative;
+    border-radius: 4px;
+    background-repeat: no-repeat;
+}
+.isEditing {
+    display: block
+}
+
+.editButtons {
+    display: inline-block;
+}
+
