@@ -1,19 +1,40 @@
 import React from 'react';
 import autobind from 'react-autobind';
+import { connect } from 'react-redux';
+
+import { createSelector } from 'reselect';
+
+import profileEditingSelector from 'profileEditingSelector';
 
 import styles from './styles.css';
 
 
 
 class ProfilePageLeft extends React.Component {
-  constructor() {
-    super();
-      autobind(this);
-  }
+    constructor() {
+	super();
+    }
 
     render() {
-	return (
-    <div className={styles.profileSideOffset}>
+	
+	const profileLeftState = this.props.profileEditing ? (
+		<div className={styles.ProfileLeftEditingContainer+" "+styles.profileSideOffset}>
+		<div className={styles.ProfileAvatar}>
+		<a>
+		<img alt="Kielan Lemons" src="https://pbs.twimg.com/profile_images/694099768834797568/IvPKkR0E_400x400.jpg"></img>
+		</a>
+		</div>
+		
+		<div className={styles.ProfileLeftEditingContent}>
+		<div className={styles.ProfileHeaderCardEditingName}><input placeholder="Name"  className={styles.ProfileInputEdit}></input></div>
+		<div className={styles.ProfileCardEditingScreenName}>@<span>KielanLemons</span></div>
+		<div className={styles.ProfileHeaderCardEditingBio}><input placeholder="Bio" className={styles.ProfileInputEdit}></input></div>
+		<div className={styles.ProfileHeaderCardEditingLocation}><input placeholder="Location" className={styles.ProfileInputEdit}></input></div>
+		<div className={styles.ProfileHeaderCardEditingLocation}><input placeholder="Website" className={styles.ProfileInputEdit}></input></div>
+		</div>
+		</div>
+	) : (
+		<div className={styles.profileSideOffset}>
 		<div className={styles.ProfileAvatar}>
 		<a>
 		<img alt="Kielan Lemons" src="https://pbs.twimg.com/profile_images/694099768834797568/IvPKkR0E_400x400.jpg"></img>
@@ -28,17 +49,27 @@ class ProfilePageLeft extends React.Component {
 		<div className="ProfileHeaderCardJoinDate"><i className="fa fa-calendar"></i><span>Joined June 2013</span></div>
 		</div>
 		</div>
-
-		<div className={styles.ProfileHeaderCardEditing}>
-		<div className={styles.ProfileHeaderCardEditingName}><input ></input></div>
-		<div className={styles.ProfileCardEditingScreenName}></div>
-		<div className={styles.ProfileHeaderCardEditingBio}><input ></input></div>
-		<div className={styles.ProfileHeaderCardEditingLocation}><input ></input></div>
-	    </div>
-	</div>
+		</div>
+	)
+	
+	return (
+		<section className={styles.ProfileHeaderCardEditing}>
+		{profileLeftState}
+	    </section>
 	)
     }
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+	_handleBioChange: () => {
+	    console.log('faggot')
+	},
+	dispatch,
+    };
+}
 
-export default ProfilePageLeft;
+export default connect(createSelector(
+    profileEditingSelector,
+    (profileEditing) => ({ profileEditing })
+), mapDispatchToProps)(ProfilePageLeft);
