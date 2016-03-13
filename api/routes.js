@@ -25,10 +25,10 @@ router.post('/login', passport.authenticate('local', { session: false }), genera
 });
 
 router.post('/bitsSubmit', function(req, res, next) {
-    console.log("req.body", req)
+    console.log("req.body", req.body)
 
     //Bit.create({
-	
+	//content: bit
     //})
     return res.status(200)
 })

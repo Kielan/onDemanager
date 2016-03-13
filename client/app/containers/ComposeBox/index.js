@@ -7,6 +7,7 @@ import { ButtonInput } from 'react-bootstrap';
 import { createSelector } from 'reselect';
 
 import composeBoxContentSelector from 'composeBoxContentSelector';
+import usernameSelector from 'usernameSelector';
 
 import {
     bitCommitSubmit,
@@ -126,7 +127,7 @@ class ComposeBox extends React.Component {
 
     onComposeBit (evt) {
 	evt.preventDefault();
-	this.props._onBitCommit(this.state.formState.content)
+	this.props._onBitCommit(this.props.username, new Date(), this.state.formState.content )
     }
 
     render (){
@@ -291,10 +292,10 @@ class ComposeBox extends React.Component {
 
 function mapDispatchToProps(dispatch) {
     return {
-	_onBitCommit: (bit) => {
-	    console.log('in compose form', bit);
+	_onBitCommit: (author, date, content) => {
+	    console.log('in compose form', date);
 
-	    dispatch(bitCommitSubmit(bit))
+	    dispatch(bitCommitSubmit(author, date, content))
 	},
 	dispatch
     }
@@ -302,5 +303,6 @@ function mapDispatchToProps(dispatch) {
 
 export default connect(createSelector(
     composeBoxContentSelector,
-    (composeBoxContent) => ({composeBoxContent})
+    usernameSelector,
+    (composeBoxContent, username) => ({composeBoxContent, username})
 ), mapDispatchToProps)(ComposeBox);

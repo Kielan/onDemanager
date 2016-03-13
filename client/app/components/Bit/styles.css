@@ -1,4 +1,4 @@
-section {
+.bitContainer {
     cursor: pointer;
     padding: 9px 12px;
     Background-color: white;
@@ -25,6 +25,44 @@ section {
 	    font-size: 13px;
 	    color: #8899a6;
 	    font-weight: normal;
+	}
+    }
+}
+
+.bitAction {
+    width: 80px;
+    display: inline-block;
+
+    button {
+	color: #aab8c2;
+	font-size: 16px;
+	cursor: pointer;
+	
+	.actionReply {
+	    &:hover {
+		color: blue;
+	    }
+	}
+
+	.actionRetweet {
+	    &:hover {
+		color: green;
+	    }
+
+	}
+
+	.actionFlash {
+	    &:hover {
+		color: yellow;
+	    }
+	    
+	}
+
+	.actionOther {
+	    &:hover {
+		color: blue;
+	    }
+
 	}
     }
 }

@@ -73,10 +73,10 @@ export function reposLoaded(repos) {
   };
 }
 
-export function bitCommitSubmit(bit) {
-    console.log('bitCommitSubmit action', bit)
+export function bitCommitSubmit(author, date, content) {
+    console.log('bitCommitSubmit action', date)
     return {
 	type: BIT_COMMIT_SUBMIT,
-	bit: { bit }
+	bit: { author: author, date: date, content: content }
     }
 }
