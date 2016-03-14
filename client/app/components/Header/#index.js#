@@ -24,14 +24,6 @@ class Header extends React.Component {
 	autobind(this);
 
     }
-
-    closeModalCompose() {
-	this.setState({ showModalCompose: false });
-    }
-
-    openModalCompose() {
-	this.setState({ showModalCompose: true });
-    }
     
     render() {
 	return (

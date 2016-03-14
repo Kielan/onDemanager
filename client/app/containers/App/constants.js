@@ -13,3 +13,7 @@ export const CHANGE_COMPOSE_BOX = 'boilerplate/App/CHANGE_COMPOSE_BOX';
 export const EDIT_PROFILE = 'boilerplate/App/EDIT_PROFILE';
 export const CANCEL_EDIT_PROFILE = 'boilerplate/App/CANCEL_EDIT_PROFILE';
 export const SAVE_EDIT_PROFILE = 'boilerplate/App/SAVE_EDIT_PROFILE';
+export const SHOW_MODAL_COMPOSE = 'boilerplate/App/SHOW_MODAL_COMPOSE';
+export const HIDE_MODAL_COMPOSE = 'boilerplate/App/HIDE_MODAL_COMPOSE';
+export const UPDATE_MODAL_TEXT_CONTENT = 'boilerplate/App/UPDATE_MODAL_TEXT_CONTENT';
+export const MODAL_BIT_COMMIT_SUBMIT = 'boilerplate/App/MODAL_BIT_COMMIT_SUBMIT';

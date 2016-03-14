@@ -96,25 +96,25 @@ export function cancelEditProfile() {
 export function showModalCompose() {
     return {
 	type: SHOW_MODAL_COMPOSE
-    }
+    };
 }
 
 export function hideModalCompose() {
     return {
 	type: HIDE_MODAL_COMPOSE
-    }
+    };
 }
 
 export function updateModalTextContent(newContent) {
     return {
 	type: UPDATE_MODAL_TEXT_CONTENT
 	newContent
-    }
+    };
 }
 
 export function modalBitCommitSubmit(author, date, content) {
     return {
 	type: MODAL_BIT_COMMIT_SUBMIT,
 	bit: { author: author, date: date, content: content }
-    }
+    };
 }

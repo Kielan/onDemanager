@@ -8,7 +8,9 @@ import {
     BIT_COMMIT_SUBMIT,
     EDIT_PROFILE,
     CANCEL_EDIT_PROFILE,
-    SAVE_EDIT_PROFILE
+    SAVE_EDIT_PROFILE,
+    SHOW_MODAL_COMPOSE,
+    UPDATE_MODAL_TEXT_CONTENT
 } from './constants';
 import { fromJS } from 'immutable';
 
@@ -24,11 +26,20 @@ const initialState = fromJS({
     }),
     ComposeBoxState: {
 	content: ''
-    }
+    },
+    ModalComposeState {
+	content: ''
+    },
+    showModalCompose: false
 });
 
 function globalReducer(state = initialState, action) {
     switch (action.type) {
+    case UPDATE_MODAL_TEXT_CONTENT:
+	return state.setIn(['ModalComposeState', 'content'], action.newContent)
+    case SHOW_MODAL_COMPOSE:
+	console.log('showModalCompose', state.get('showModalCompose'))
+	return state.set('showModalCompose', true)
     case EDIT_PROFILE:
 	var toggle = state.get('profileEditing')
 	console.log('meh toggle', toggle);
@@ -39,7 +50,6 @@ function globalReducer(state = initialState, action) {
     case SAVE_EDIT_PROFILE:
 	return state.set('profileEditing', false)
     case BIT_COMMIT_SUBMIT:
-	console.log('bitcommitsubmitnigga', action)
 	
     case LOAD_BITS_SUCCESS:
 	console.log('find bits in thar', action)

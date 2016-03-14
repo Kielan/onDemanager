@@ -31,6 +31,7 @@ class ProfilePageLeft extends React.Component {
 		<div className={styles.ProfileHeaderCardEditingBio}><input placeholder="Bio" className={styles.ProfileInputEdit}></input></div>
 		<div className={styles.ProfileHeaderCardEditingLocation}><input placeholder="Location" className={styles.ProfileInputEdit}></input></div>
 		<div className={styles.ProfileHeaderCardEditingLocation}><input placeholder="Website" className={styles.ProfileInputEdit}></input></div>
+		<div className={styles.userColorButtonContainer}><button className={styles.userColorButton+" "+styles.userColor}>Theme color</button></div>
 		</div>
 		</div>
 	) : (
