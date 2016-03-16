@@ -140,17 +140,17 @@ class ComposeBitModal extends React.Component {
     }
 
     onModalBitCommitSubmit() {
-	this.props._modalBitCommitSubmit(this.props.username, new Date(), this.props.)
+	this.props._modalBitCommitSubmit(this.props.username, new Date(), this.state.formState.content)
     }
 
     render() {
 	
 	return (
-		<Modal show={this.props.showModalCompose} onHide={this.props.close}>
+		<Modal show={this.props.showToggle} onHide={this.props.close}>
 		<Modal.Header>
 		<Modal.Title className={styles.ModalTitle}>Compose new Bit</Modal.Title>
 		<Modal.Body>
-		<form onSubmit={this.onComposeBit.bind(this)}>
+		<form >
 		<div aria-live='polite'>{this.state.error}</div>
 		<div ref="ContentEditableContainer" >
 		<ContentEditable

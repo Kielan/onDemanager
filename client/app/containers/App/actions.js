@@ -107,7 +107,7 @@ export function hideModalCompose() {
 
 export function updateModalTextContent(newContent) {
     return {
-	type: UPDATE_MODAL_TEXT_CONTENT
+	type: UPDATE_MODAL_TEXT_CONTENT,
 	newContent
     }
 }

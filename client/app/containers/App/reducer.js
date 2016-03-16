@@ -27,7 +27,7 @@ const initialState = fromJS({
     ComposeBoxState: {
 	content: ''
     },
-    ModalComposeState {
+    ModalComposeState: {
 	content: ''
     },
     showModalCompose: false

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
 import loggedInSelector from 'loggedInSelector';
+import showModalComposeSelector from 'showModalComposeSelector';
 
 import {
     showModalCompose
@@ -67,7 +68,7 @@ class Header extends React.Component {
 		</div>
 		</Col>
 
-		<ComposeBitModal showToggle={this.openModalCompose} close={this.closeModalCompose} />
+		<ComposeBitModal showToggle={this.props.showModalCompose} close={this.closeModalCompose} />
 		</Row>
 	)
     }
@@ -82,5 +83,6 @@ function mapDispatchToProps(dispatch) {
 
 export default connect(createSelector(
     loggedInSelector,
-    (loggedIn) => ({loggedIn})
+    showModalComposeSelector,
+    (loggedIn, showModalCompose) => ({loggedIn, showModalCompose})
 ), mapDispatchToProps)(Header);
